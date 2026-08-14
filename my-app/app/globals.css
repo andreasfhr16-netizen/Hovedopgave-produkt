@@ -1,4 +1,8 @@
+@layer base, mantine, components, utilities;
+
 @import "tailwindcss";
+@import '@mantine/core/styles.css' layer(mantine);
+@import '@mantine/dates/styles.css' layer(mantine);
 
 :root {
   --background: #ffffff;
