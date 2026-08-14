@@ -1,0 +1,44 @@
+.event-create-page {
+  display: flex;
+  flex-direction: column; /* navbar on top, content below */
+  width: 100vw;
+  height: 100vh;
+}
+
+.event-create-container {
+  display: flex;
+  flex: 1; /* takes remaining space after navbar */
+  width: 100%;
+  background: #FF6F3C;
+  align-items: center;
+  padding-top:5vh;
+}
+
+.event-create-content{
+display:flex;
+width:90vw;
+height:auto;
+outline:4px solid black;
+border-radius:2px;
+flex-direction:row;
+padding:20px;
+gap:15px;
+}
+
+.event-create-content-row{
+display:flex;
+width:45vw;
+height:auto;
+background:#c45f3a;
+flex-direction:column;
+
+
+}
+
+#event-create-heading{
+font-weight:bold;
+font-size:40px;
+color:#ffffff;
+
+
+}

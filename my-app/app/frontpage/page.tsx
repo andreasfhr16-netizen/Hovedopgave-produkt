@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/navbar";
-import "../stylesheet.css";
+import "../stylesheets/frontpage.css";
 
 export default function Home() {
   return (
@@ -18,7 +18,10 @@ export default function Home() {
 
                 <h1>Velkommen til Event Planner</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
               </div>
 
             </div>
@@ -31,13 +34,13 @@ export default function Home() {
 
                   <div className="frontpage-search-btns">
 
-                    <a>hej</a>
+                    <a>Event tags</a>
 
                   </div>
 
                   <div className="frontpage-search-btns">
 
-                    <a>hej2</a>
+                    <a>Filtersøgning</a>
 
                   </div>
 
@@ -71,7 +74,10 @@ export default function Home() {
                 </div>
 
                 <div className="frontpage-shortcut-btn">
-                  <p>Opret event</p>
+                 
+                  <Link href="/event-create-page">
+                  Opret event
+                  </Link>
                 </div>
 
               </div>
@@ -86,13 +92,15 @@ export default function Home() {
 
         </div>
 
-<Image 
-  src="/hovedopgave-waves-2.svg" 
-  alt="wave decoration" 
-  width={1903} 
-  height={200}
-  
-/>
+<div className="wave-container">
+  <Image 
+    src="/hovedopgave-waves-2.svg" 
+    alt="wave decoration" 
+    width={1903} 
+    height={200} 
+    className="wave-svg"
+  />
+</div>
       </main>
     </div>
   );
