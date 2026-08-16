@@ -1,0 +1,112 @@
+.opret-bruger-site-container{ /* main */
+display:flex;
+width:100vw;
+height:100vh;
+background:#FFFFFF;
+justify-content:center;
+align-items:center;
+
+}
+
+.opret-bruger-page {
+  display: flex;
+  flex-direction: column;
+  /* navbar on top, content below */
+  width: 100vw;
+  height: 100vh;
+}
+
+.opret-bruger-content{
+display:flex;
+width:40vw;
+height:50vh;
+
+flex-direction:column;
+align-items:center;
+padding-top:40px;
+gap:5px;
+
+}
+
+#opret-bruger-heading{
+color:#000000;
+font-weight:500;
+font-size:36px;
+padding-bottom:30px;
+width:60%;
+
+
+}
+
+#opret-bruger-subheading{
+color:#000000;
+font-weight:400;
+font-size:20px;
+
+}
+
+.opret-bruger-field{
+display:flex;
+flex-direction:column;
+width:60%;
+margin-bottom:20px;
+margin-bottom:0;
+
+}
+
+.opret-bruger-input{
+width:100%;
+height:38px;
+border:1px solid #000000;
+border-radius:20px;
+padding-left:16px;
+margin-top:4px;
+font-size:16px;
+
+}
+
+
+.opret-bruger-btn-row{
+display:flex;
+width:60%;
+gap:16px;
+justify-content:flex-end;
+padding-top:15px;
+}
+
+.opret-bruger-signup-btn, .login-panel-login-btn{
+display:flex;
+align-items:center;
+justify-content:center;
+background:#1a2744;
+color:#FFFFFF;
+font-weight:600;
+padding:12px 24px;
+border-radius:6px;
+cursor:pointer;
+
+}
+
+.opret-bruger-login-btn{
+display:flex;
+align-items:center;
+justify-content:center;
+background:#FFFFFF;
+color:black;
+font-weight:600;
+padding:12px 24px;
+border-radius:6px;
+cursor:pointer;
+
+
+
+}
+
+.opret-bruger-signup-btn:hover, .login-panel-login-btn:hover{
+background:#243352;
+
+}
+
+input, select{
+    color: #000000;
+}
