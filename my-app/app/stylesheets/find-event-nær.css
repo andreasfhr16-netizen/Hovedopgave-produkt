@@ -1,0 +1,48 @@
+.find-event-nær-page {
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+.find-event-nær-con {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+
+
+
+}
+
+.nær-event-con {
+    position:relative;
+    width: 100vw;
+    height: 90vh;
+    outline: 3px solid green;
+    flex-direction: column;
+    flex: 1;
+
+}
+
+.nær-event-søgefelt-con {
+    display: flex;
+    width: 25vw;
+    height: 10vh;
+   
+
+}
+
+.nær-event-search-input {
+    display: flex;
+    background: #FFFFFF;
+    color: #000000;
+    width: 25vw;
+    height: 3vh;
+    border-radius: 10px;
+    padding: 10px;
+    position:absolute;
+    z-index:1000;
+    margin-top:10px;
+    margin-left:50px;
+
+}

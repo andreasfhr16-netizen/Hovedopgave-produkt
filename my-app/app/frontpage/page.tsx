@@ -66,7 +66,9 @@ export default function Home() {
                 </div>
 
                 <div className="frontpage-shortcut-btn">
-                  <p>Find event nær dig</p>
+                  <Link href="/find-near-events">
+                  Find event nær dig
+                  </Link>
                 </div>
 
                 <div className="frontpage-shortcut-btn">
