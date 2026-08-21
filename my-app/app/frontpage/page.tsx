@@ -62,7 +62,9 @@ export default function Home() {
               <div className="frontpage-shortcuts-btn-con">
 
                 <div className="frontpage-shortcut-btn">
-                  <p>Find gruppe</p>
+                 <Link href="/find-group">
+                  Find gruppe
+                  </Link>
                 </div>
 
                 <div className="frontpage-shortcut-btn">

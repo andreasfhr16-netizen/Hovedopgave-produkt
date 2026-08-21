@@ -1,0 +1,65 @@
+.component-con {
+    display: flex;
+    width: 90%;
+    height: 90%;
+    flex-direction: row;
+    outline: 3px solid #FF6F3C;
+    background: rgb(221 154 90 / 12%);
+    border-radius:5px;
+
+
+
+
+}
+
+
+.statistics-component-content {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+    align-items:center;
+
+}
+
+.statistics-component-item {
+    display: flex;
+    min-width: 20%;
+    flex-direction:column;
+    height:95%;
+    gap:5px;
+    
+
+
+}
+
+.statistics-component-item-header{
+display:flex;
+flex-direction:row;
+width:100%;
+height:15%;
+color:black;
+font-size: clamp(1rem, 1.5vw, 2rem);
+padding-left:6%;
+
+}
+
+.statistics-component-item-info{
+display:flex;
+flex-direction:column;
+width:95%;
+height:20%;
+color:black;
+font-size:20px;
+word-break: break-all;
+padding-left:6%;
+    
+}
+
+.statistics-component-item-divider{
+rotate:0deg;
+width:3.5px;
+height:90%;
+background:#262626;
+
+}
