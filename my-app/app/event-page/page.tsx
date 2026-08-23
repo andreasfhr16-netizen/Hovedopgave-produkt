@@ -158,6 +158,64 @@ export default function Home() {
 
             <div className="event-side-content-con">
 
+              <div className="event-practical-info-con">
+
+                <div className="event-practical-info-heading-row">
+                  <h1>Praktisk information</h1>
+                </div>
+
+                <div className="event-practical-info-columns-row">
+
+                  <div className="event-practical-info-content-column1">
+
+                    <div className="event-practical-info-calender-heading">
+                      <h1>Kalender</h1>
+                    </div>
+
+                    <div className="event-practical-info-calender-con">
+                      <div className="event-practical-info-calender-item">
+                        <p>19 oktober kl 12</p>
+                        <p>Hvidovre (GMT+2)</p>
+                      </div>
+                      <div className="event-practical-info-calender-item">
+                        <p>19 oktober kl 12</p>
+                        <p>Hvidovre (GMT+2)</p>
+                      </div>
+                    </div>
+
+                    <div className="event-practical-info-fees-con">
+                      <div className="event-practical-info-fees-heading">
+                        <h1>Gebyrer</h1>
+                      </div>
+                      <div className="event-practical-info-fees-text">
+                        <p>Øl - 35 kr</p>
+                        <p>Dansesko - str 45 - 35 kr</p>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div className="event-practical-info-content-column2">
+
+                    <div className="event-practical-info-location-heading">
+                      <h1>Event lokation</h1>
+                    </div>
+
+                    <div className="event-practical-info-location-map-con">
+                      <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d36041.065439590646!2d12.457654250000001!3d55.626956799999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sda!2sdk!4v1787516483944!5m2!1sda!2sdk"
+                        style={{ border: 0, width: "100%", height: "100%" }}
+                        allowFullScreen
+                        loading="lazy"
+                        referrerPolicy="strict-origin-when-cross-origin"
+                      ></iframe>
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
 
 
             </div>
