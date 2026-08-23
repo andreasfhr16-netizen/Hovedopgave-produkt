@@ -1,0 +1,33 @@
+.friend-element-con {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+    width: 5.5%;
+    height: 100%;
+    gap:10px;
+    
+    
+    
+
+
+
+}
+
+.friend-icon {
+    display: flex;
+    width: 100%;
+    height:40%;
+    border-radius:50px;
+    background:gray;
+   
+    
+
+}
+
+.friend-name-con {
+font-size:clamp(0.5rem, 1vw, 1rem);
+margin-right:7.5%;
+white-space: nowrap;
+color:black;
+}

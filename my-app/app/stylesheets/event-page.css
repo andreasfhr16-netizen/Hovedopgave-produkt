@@ -1,0 +1,300 @@
+.event-page {
+    display: flex;
+    width: 100vw;
+    min-height: 100vh;
+    flex-direction: column;
+
+
+}
+
+.event-page-con {
+    display: flex;
+    width: 100vw;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.event-page-statistics-con {
+    display: flex;
+    width: 100vw;
+    height: 300px;
+    flex-shrink: 0;
+    flex-direction: row;
+    background: #FF6F3C;
+    align-items: center;
+    gap: 10%;
+
+
+}
+
+.event-created-by-header {
+    display: flex;
+    align-items: center;
+    background: #FF6F3C;
+    width: 100%;
+    height: 10%;
+    color: white;
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
+    padding-bottom: 15px;
+
+}
+
+.event-created-by-con {
+    display: flex;
+    width: 20%;
+    height: 80%;
+    margin-left: 5%;
+    flex-direction: column;
+
+
+}
+
+.event-created-by-block {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background: #FFFFFF;
+
+
+
+}
+
+.event-created-by-heading-row {
+    display: flex;
+    width: 100%;
+    height: 15%;
+    padding-bottom: 30px;
+    padding-left: 5%;
+
+}
+
+#event-group-heading {
+    font-size: clamp(1.2rem, 1.7vw, 1.7rem);
+    color: black;
+    font-weight: bold;
+
+
+}
+
+.event-member-row {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 30px;
+
+
+}
+
+.event-group-member-item {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    color: black;
+    padding-left: 5%;
+
+
+}
+
+.event-group-member-item-underline {
+    width: 40%;
+    height: 5px;
+    background: #FF6F3C;
+    flex-shrink: 0;
+
+
+}
+
+.event-group-created-by-row-divider {
+    display: flex;
+    width: 100%;
+    height: 10%;
+
+
+}
+
+.event-group-creater-row {
+    display: flex;
+    width: 100%;
+    height: 20%;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 5%;
+
+
+
+}
+
+.event-creator-item {
+    display: flex;
+    width: 8%;
+    height: 60%;
+    border-radius: 50px;
+    background: rgb(129, 131, 129);
+
+
+}
+
+.event-creator-header {
+    color: black;
+
+}
+
+.event-created-by-group-btn-row {
+    display: flex;
+    width: 100%;
+    height: 25%;
+    flex-direction: row;
+
+}
+
+.event-created-by-group-btn {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background: #1A2B4C;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 20px;
+
+}
+
+.event-statistics-tags-con {
+    display: flex;
+    width: 25%;
+    height: 70%;
+    flex-direction: column;
+
+
+
+}
+
+.event-statistics-tags-header {
+    display: flex;
+    width: 100%;
+    height: 20%;
+    color: white;
+    font-weight: bold;
+
+
+}
+
+.event-statistics-tag-content {
+    display: flex;
+    width: 100%;
+    height: 80%;
+    flex-direction: column;
+
+}
+
+.event-statistics-tag-content-row {
+    display: flex;
+    width: 100%;
+    height: 30%;
+    flex-direction: row;
+    gap: 3px;
+
+
+}
+
+.event-statistics-tag-item {
+    display: flex;
+    align-items: center;
+    color: white;
+    width: 15%;
+    height: 60%;
+    border-radius: 5px;
+    background: #262626;
+
+
+
+
+}
+
+.event-main-content-con {
+    display: flex;
+    width: 70%;
+    height: 1000px;
+    background: #1f4faf;
+    flex-direction: column;
+    flex: 1;
+
+}
+
+.event-side-content-con {
+    display: flex;
+    width: 30%;
+    height: 1000px;
+    background: #4a69a8;
+    flex-direction: column;
+
+
+
+}
+
+.event-content-con2 {
+    display: flex;
+    width: 100%;
+    min-height: 1000px;
+    flex-direction: row;
+    flex: 1;
+
+
+
+}
+
+.event-description-heading {
+    display: flex;
+    width: 100%;
+    height: 5%;
+    color: black;
+    font-weight: bold;
+    font-size: clamp(1.3rem, 1.6vw, 1.6rem);
+    align-items: center;
+    padding-top: 50px;
+
+
+
+}
+
+#event-page-description-heading {
+    display: flex;
+    color: black;
+    font-weight: bold;
+    font-size: clamp(1.3rem, 1.6vw, 1.6rem);
+    padding-left: 7.5%;
+
+}
+
+.event-description-text-con {
+    display: flex;
+    width: 90%;
+    height: 25%;
+    flex-direction: column;
+    word-break: break-all;
+    padding-left: 7.5%;
+    padding-top: 20px;
+
+
+}
+
+.event-description-text-con p {
+    color: black;
+
+}
+
+.event-friend-component-con {
+    display: flex;
+    width: 100%;
+    height: 20%;
+    flex-direction:row;
+    padding-left: 7.5%;
+    padding-top: 40px;
+    align-items:flex-start;
+    gap:60px;
+
+
+}
+
