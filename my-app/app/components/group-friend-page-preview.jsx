@@ -1,7 +1,7 @@
 import "../stylesheets/group-showcase.css";
 import Link from "next/link";
 
-export default function Gpreview({ }) {
+export default function GroupFriendpreview({ }) {
     return (
 
         <div className="group-showcase-con">
@@ -59,10 +59,7 @@ export default function Gpreview({ }) {
                 </div>
 
                 <div className="group-showcase-btn-row">
-                    <Link href="/deltag" className="group-showcase-btn1">
-                        <p>Deltag i gruppe</p>
-                    </Link>
-
+                    
                     <Link href="/gruppe" className="group-showcase-btn2">
                         <p>Gå til gruppe</p>
                     </Link>

@@ -1,149 +1,287 @@
-/* CSS fil for komponenten der fremviser lidt info om en gruppe*/
-.group-showcase-con{
-display:flex;
-width:30vw;
-height:30vh;
-outline:2px solid #000000;
-flex-direction:row;
+/* CSS fil for komponenten der fremviser lidt info om en gruppe */
 
+.group-showcase-con {
+    display: flex;
+    flex-direction: row;
+
+    width: 445px;
+    height: 254px;
+
+    border: 2px solid #000000;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 24px;
+    border-top-right-radius: 24px;
+    border-bottom-right-radius: 24px;
+
+    overflow: hidden;
+    background: #ffffff;
+    box-sizing: border-box;
+
+    flex-shrink: 0;
+}
+
+.group-showcase-img-box {
+    flex: 0 0 35%;
+    width: 35%;
+    background: #a09f9f;
+}
+
+.group-showcase-part2-con {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+
+    background: #ffffff;
+
+    padding: 7px 0 0 5px;
+
+    flex-direction: column;
+    gap: 6px;
+
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.group-showcase-textbox {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    color: #000000;
+
+    gap: 5px;
+}
+
+.group-showcase-textbox h2 {
+    font-size: 18px;
+    line-height: 21px;
+    font-weight: 700;
+
+    margin: 0;
+}
+
+.group-showcase-textbox p {
+    font-size: 9px;
+    line-height: 12px;
+
+    margin: 0;
+    padding-right: 5px;
+
+    color: #1a1a1a;
+}
+
+.group-showcase-member-row {
+    display: flex;
+    flex-direction: row;
+
+    width: 100%;
+
+    gap: 29px;
+}
+
+.group-showcase-member-info {
+    display: flex;
+    flex-direction: column;
+
+    color: #000000;
+
+    min-width: 0;
+}
+
+.group-showcase-member-info h3 {
+    font-size: 9px;
+    line-height: 11px;
+    font-weight: 600;
+
+    margin: 0 0 2px 0;
+}
+
+.group-showcase-member-info h4 {
+    font-size: 10px;
+    line-height: 12px;
+    font-weight: 500;
+
+    margin: 0 0 3px 0;
+}
+
+#group-showcase-member-line {
+    display: block;
+
+    color: black;
+    background: black;
+
+    border: none;
+
+    width: 42px;
+    height: 1px;
+
+    margin: 0;
+}
+
+.group-showcase-tag-section {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+
+    gap: 4px;
+}
+
+.group-showcase-tag-row-heading {
+    color: #000000;
+
+    font-size: 9px;
+    line-height: 11px;
+    font-weight: 600;
+
+    margin: 0;
+}
+
+.group-showcase-tag-row {
+    display: flex;
+    flex-direction: row;
+
+    gap: 6px;
+}
+
+.group-showcase-tag-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 3px 8px;
+
+    background: black;
+    color: white;
+
+    font-size: 8px;
+    line-height: 9px;
+
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.group-showcase-tag-btn p {
+    margin: 0;
+    padding: 0;
+
+    color: white;
+
+    font-size: 8px;
+    line-height: 9px;
+}
+
+.group-showcase-btn-row {
+    display: flex;
+    flex-direction: row;
+
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.group-showcase-btn1,
+.group-showcase-btn2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex: 0 0 auto;
+
+    padding: 9px 10px;
+
+    color: white;
+
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15px;
+
+    white-space: nowrap;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.group-showcase-btn1 {
+    background: #1a2b4c;
+}
+
+.group-showcase-btn2 {
+    background: #344972;
+}
+
+.group-showcase-btn1 p,
+.group-showcase-btn2 p {
+    margin: 0;
 }
 
 
+/* 3 cards på desktop */
+.group-showcase-list {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
 
-.group-showcase-img-box{
-display:flex;
-height:100%;
-width:30%;
-background:#A09F9F;
-
-
-
+    width: max-content;
 }
 
-.group-showcase-part2-con{
-display:flex;
-width:75%;
-height:100%;
-background:#eeeeee;
-padding-left:20px;
-flex-direction:column;
 
+/* Tablet */
+@media (max-width: 1450px) {
+    .group-showcase-con {
+        width: 400px;
+        height: 230px;
+    }
 }
 
-.group-showcase-textbox{
-display:flex;
-width:90%;
-height:60%;
-flex-direction:column;
-color:#000000;
 
+/* Mobile */
+@media (max-width: 560px) {
 
-}
+    .group-showcase-con {
+        width: 100%;
+        max-width: 445px;
+        height: auto;
+        min-height: 254px;
 
-.group-showcase-textbox h2{
-font-size:20px;
-font-weight:500;
+        flex-direction: column;
 
+        border-top-left-radius: 0;
+        border-top-right-radius: 24px;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 24px;
+    }
 
-}
+    .group-showcase-img-box {
+        flex: 0 0 100px;
+        width: 100%;
+    }
 
-.group-showcase-member-row{
-display:flex;
-width:100%;
-height:15%;
-flex-direction:row;
-justify-content: space-between;
-align-items:flex-end;
+    .group-showcase-part2-con {
+        padding: 10px;
+        gap: 8px;
+    }
 
+    .group-showcase-textbox h2 {
+        font-size: 18px;
+        line-height: 21px;
+    }
 
-}
+    .group-showcase-textbox p {
+        font-size: 9px;
+        line-height: 12px;
+    }
 
-.group-showcase-member-info{
-display:flex;
-width:40%;
-height:100%;
-color:#000000;
-padding-left:10px;
-flex-direction:column;
+    .group-showcase-member-row {
+        gap: 24px;
+    }
 
-}
+    .group-showcase-btn-row {
+        width: 100%;
+        margin-left: 0;
+    }
 
-#group-showcase-member-line{
-display:flex;
-color:black;
-width:80%;
-height:3px;
-
-}
-
-.group-showcase-tag-row{
-display:flex;
-width:100%;
-height:10%;
-flex-direction:row;
-flex-wrap:wrap;
-gap:15px;
-row-gap:25px;
-padding-left:10px;
-
-}
-
-.group-showcase-tag-row-heading{
-display:flex;
-height:30%;
-width:100%;
-color:#000000;
-font-size:20px;
-
-
-}
-
-.group-showcase-tag-btn{
-display:flex;
-justify-content:center;
-align-items:center;
-width:10%;
-height:50%;
-background:black;
-color:white;
-border-radius:5px;
-
-
-}
-
-.group-showcase-btn-row{
-  display:flex;
-  height:10%;
-  width:100%;
-  flex-direction:row;
-  margin-top: auto; 
-  justify-content:flex-end;
-  gap:15px;
-
-
-}
-
-.group-showcase-btn1{
-display:flex;
-justify-content:center;
-align-items:center;
-background:#1A2B4C;
-width:25%;
-color:white;
-font-weight:400;
-font-size:16px;
-white-space: nowrap;
-    
-}
-
-.group-showcase-btn2{
-display:flex;
-justify-content:center;
-align-items:center;
-background:#344972;
-width:25%;
-color:white;
-font-weight:400;
-font-size:16px;
-white-space: nowrap;
+    .group-showcase-btn1,
+    .group-showcase-btn2 {
+        flex: 1 1 50%;
+    }
 }

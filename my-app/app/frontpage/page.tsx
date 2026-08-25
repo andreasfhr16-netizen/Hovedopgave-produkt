@@ -74,7 +74,9 @@ export default function Home() {
                 </div>
 
                 <div className="frontpage-shortcut-btn">
-                  <p>Venneliste</p>
+                  <Link href="/social-view-page">
+                  Venneliste
+                  </Link>
                 </div>
 
                 <div className="frontpage-shortcut-btn">
