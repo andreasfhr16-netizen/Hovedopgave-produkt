@@ -1,0 +1,429 @@
+.user-profile-page {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+
+}
+
+.user-profile-page-con {
+    display: flex;
+    width: 100vw;
+    height: 1400px;
+    flex-direction: row;
+    background: #FFFFFF;
+
+}
+
+.page-side-content-con {
+    display: flex;
+    width: 15vw;
+    height: auto;
+    flex-direction: column;
+    border-width: 0px 3px 0px 0px;
+    border-style: solid;
+    border-color: #030303;
+
+
+
+}
+
+.page-side-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 1000px;
+    max-height: 1400px;
+    background: #FFFFFF;
+
+
+
+}
+
+.page-side-content-item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 90%;
+    height: 5%;
+    color: black;
+    font-weight: 800px;
+    padding-left: 5%;
+    text-decoration: underline;
+    margin-left: 10%;
+    border-width: 0px 0px 0px 3px;
+    border-style: solid;
+    border-color: #030303;
+
+
+
+}
+
+.page-main-content-con {
+    display: flex;
+    width: 84vw;
+    height: auto;
+    flex-direction: column;
+
+}
+
+
+
+.user-settings-section-con {
+    display: flex;
+    width: 90%;
+    height: auto;
+    flex-direction: column;
+    padding: 30px;
+
+}
+
+.user-settings-section {
+    display: flex;
+    width: 100%;
+    height: 36%;
+    flex-direction: column;
+
+
+
+}
+
+.user-settings-top-section-con {
+    display: flex;
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+
+
+
+}
+
+.user-settings-section-heading {
+    display: flex;
+    flex-direction: row;
+    color: black;
+    font-weight: bold;
+    font-size: clamp(1.4rem, 1.8vw, 1.8rem);
+    height: 40px;
+    width: 100%;
+
+
+
+}
+
+.user-settings-top-section-first-settings-row {
+    display: flex;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    padding-top: 20px;
+
+
+
+}
+
+.user-settings-top-section-name-con {
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    height: auto;
+
+    gap: 10px;
+    padding-top: 10px;
+    justify-content: center;
+
+
+}
+
+.user-settings-name-item {
+    border-radius: 50px;
+    width: 50%;
+    height: 100px;
+    background: #D9D9D9;
+
+}
+
+.user-settings-name-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    background: #1A2B4C;
+    color: white;
+    font-weight: bold;
+    white-space: nowrap;
+
+}
+
+.user-settings-top-section-phone-number-con {
+    display: flex;
+    width: 15%;
+    height: auto;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+
+
+
+
+}
+
+.user-settings-phone-item {
+    display: flex;
+    height: 80px;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: flex-end;
+    white-space: nowrap;
+    flex-direction: column;
+
+
+}
+
+.user-settings-phone-item-number {
+    display: flex;
+    width: 100%;
+    height: 10px;
+    align-items: flex-end;
+    justify-content: flex-start;
+    flex-direction: row;
+    padding-left: 5%;
+    color: black;
+    font-weight: bold;
+
+
+}
+
+.user-settings-phone-item-edit {
+    display: flex;
+    height: 20px;
+    width: 100%;
+    color: rgb(181, 180, 180);
+
+    padding-left: 5%;
+
+}
+
+.user-settings-input-section-con {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 200px;
+    gap: 10px;
+
+}
+
+.user-settings-input-con {
+    display: flex;
+    width: 50%;
+    height: 100%;
+    flex-direction: column;
+
+    gap: 10px;
+
+
+}
+
+.user-settings-input-item-con {
+    display: flex;
+    width: 100%;
+    height: 48%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+
+}
+
+.user-settings-input-item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+
+
+}
+
+.user-settings-input-heading {
+    display: flex;
+    flex-direction: row;
+    color: black;
+    font-weight: bold;
+    font-size: clamp(1rem, 1.2vw, 1.2rem);
+    height: 35px;
+    width: 100%;
+
+
+
+}
+
+.user-settings-input {
+    display: flex;
+    padding: 5px;
+    outline: solid 3px black;
+    width: 80%;
+    height: 35%;
+
+
+}
+
+.user-settings-input-edit-text {
+    display: flex;
+    height: 20px;
+    width: 100%;
+    color: rgb(181, 180, 180);
+    font-size: 12px;
+    font-weight: bold;
+
+}
+
+.user-settings-section-invis-divider {
+    width: 100%;
+    height: 30px;
+
+
+}
+
+.user-setting-section-divider {
+    display: flex;
+    width: 95%;
+    height: 2px;
+    background: #DADADA;
+
+
+}
+
+.user-profile-interests-section-con {
+    display: flex;
+    width: 90%;
+    min-height: 100px;
+    max-height: 400px;
+    flex-direction: column;
+    gap: 10px;
+
+
+
+
+}
+
+.user-profile-interests-section-heading-row {
+    display: flex;
+    flex-direction: row;
+    color: black;
+    font-weight: bold;
+    font-size: clamp(1.4rem, 1.8vw, 1.8rem);
+    height: 40px;
+    width: 100%;
+
+
+
+}
+
+.user-profile-interests-section-btn-con {
+    display: flex;
+    width: 100%;
+    height: 14%;
+
+
+
+}
+
+.user-profile-interests-section-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    background: #1A2B4C;
+    width: 8%;
+    height: auto;
+
+
+}
+
+.user-profile-interests-created-con {
+    display: flex;
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+
+
+}
+
+.user-profile-interests-created-row {
+    display: flex;
+    width: 100%;
+    height: 10%;
+
+}
+
+.user-profile-interests-created-item {
+    display: flex;
+
+}
+
+.user-profile-social-calendar-section {
+    display: flex;
+    width: 90%;
+    height: 450px;
+    flex-direction: column;
+    gap: 10px;
+
+
+
+
+}
+
+.user-profile-social-calendar-section-heading {
+    display: flex;
+    flex-direction: column;
+    color: black;
+    font-weight: bold;
+    font-size: clamp(1.4rem, 1.8vw, 1.8rem);
+    height: auto;
+    width: 100%;
+
+
+
+
+
+}
+
+.user-profile-social-calendar-section-subheading {
+    color: black;
+    font-weight: 400;
+    font-size: clamp(0.8rem, 1.2vw, 1.2rem);
+
+
+
+
+}
+
+.user-profile-social-calendar-section-component-con {
+    display: flex;
+    width: 100%;
+    min-height: 280px;
+    max-height: 400px;
+    flex-direction: row;
+    gap: 20px;
+
+}
+
+input,
+select,
+textarea {
+    color: black;
+}
+
+.footer-section {
+    display: flex;
+    min-height: 300px;
+    background: #FF6F3C;
+    width: 100%;
+
+
+}
