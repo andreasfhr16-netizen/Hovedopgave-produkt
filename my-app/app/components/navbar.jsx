@@ -5,7 +5,9 @@ export default function Navbar({}) {
    <div className={"navbar-con"}>
 
 <div className={"home-btn"}>
-<a>Hjem</a>
+<Link href="/frontpage">
+                  Hjem
+                  </Link>
 </div>
 
 <div className={"navbar-item"}>
@@ -20,7 +22,9 @@ export default function Navbar({}) {
 <div className={"navbar-item"}>
 
 <div className={"navbar-btn"}>
-<a>Opret bruger</a>
+<Link href="/signup-panel">
+                  Opret bruger
+                  </Link>
 </div>
 </div>
 
