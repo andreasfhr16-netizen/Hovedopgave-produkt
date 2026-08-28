@@ -12,6 +12,7 @@
     "@mantine/core": "^9.5.1",
     "@mantine/dates": "^9.5.1",
     "@mantine/hooks": "^9.5.1",
+    "@supabase/supabase-js": "^2.112.4",
     "dayjs": "^1.11.21",
     "leaflet": "^1.9.4",
     "next": "16.3.0",
