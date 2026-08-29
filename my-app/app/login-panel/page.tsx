@@ -3,10 +3,10 @@ import "../stylesheets/login-panel.css";
 import Navbar from "../components/navbar";
 import Link from "next/link";
 import { useState } from "react";
-import { redirect, usePathname } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 export default function Home() {
-
+const router = useRouter();
 
   const LoggedInUser ={}
   const [loginmail, setLoginmail] = useState("")
@@ -34,7 +34,7 @@ export default function Home() {
     }
 
     
-    redirect("/frontpage")
+     router.push("/frontpage");
     
   };
 
