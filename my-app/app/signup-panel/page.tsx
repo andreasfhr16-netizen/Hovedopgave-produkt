@@ -3,6 +3,7 @@ import "../stylesheets/opret-bruger-panel.css";
 import Navbar from "../components/navbar";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { redirect, usePathname } from 'next/navigation'
 
 export default function Home() {
 
@@ -32,6 +33,7 @@ export default function Home() {
     }
     
     console.log("Bruger oprettet:", data);
+    redirect("/login-panel")
   };
 
 
