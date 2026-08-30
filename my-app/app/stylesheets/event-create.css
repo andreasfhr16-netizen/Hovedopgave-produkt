@@ -3,13 +3,12 @@
   flex-direction: column;
   /* navbar on top, content below */
   width: 100vw;
-  height: 100vh;
+  height: 1100px;
 }
 
 .event-create-container {
   display: flex;
   flex: 1;
-  /* takes remaining space after navbar */
   width: 100%;
   background: #FF6F3C;
   align-items: center;
@@ -50,7 +49,7 @@
   font-size: 20px;
   color: #ffffff;
   margin-left: 20px;
-  padding-top:20px;
+  padding-top: 20px;
 
 }
 
@@ -64,10 +63,10 @@
   color: #000000;
   padding: 5px;
   margin-left: 20px;
-  
+
 }
 
-.event-create-textarea-input{
+.event-create-textarea-input {
   min-height: 100px;
   height: fit-content;
   min-width: 100px;
@@ -79,46 +78,100 @@
   margin-left: 20px;
 }
 
-.event-create-dato-con{
-display:flex;
-align-items:center;
-flex-direction:row;
-width:33vw;
-height:auto;
-margin-left:20px;
-gap:15px;
+.event-create-dato-con {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  width: 33vw;
+  height: auto;
+  margin-left: 20px;
+  gap: 15px;
 
 
 }
 
-.event-create-dato-input{
-width:10vw;
+.event-create-dato-input {
+  width: 10vw;
 
 }
 
-.event-create-tag-btn{
-display:flex;
-align-items:center;
-width:15vw;
-height:5vh;
-background:#FFFFFF;
-color:#000000;
-border-radius:10px;
-margin-left:20px;
-padding-left:5px;
+.event-create-tag-btn {
+  display: flex;
+  align-items: center;
+  width: 15vw;
+  height: 5vh;
+  background: #FFFFFF;
+  color: #000000;
+  border-radius: 10px;
+  margin-left: 20px;
+  padding-left: 5px;
 
 }
 
-.event-create-event-btn{
-display:flex;
-justify-content:center;
-align-items:center;
-background:#1A2B4C;
-color:#FFFFFF;
-border-radius:3px;
-height:4vh;
-width:5vw;
-margin-left:20px;
-margin-top:20px;
+.event-create-event-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #1A2B4C;
+  color: #FFFFFF;
+  border-radius: 3px;
+  height: 4vh;
+  width: 5vw;
+  margin-left: 20px;
+  margin-top: 20px;
+
+}
+
+#pick-event-timezone-input:hover {
+  cursor: pointer;
+
+}
+
+
+.input-list-con {
+  display: flex;
+  flex-direction: column;
+  width: 180px;
+  background: white;
+  height: auto;
+  margin-left: 20px;
+  margin-top: 5px;
+
+}
+
+.input-list-item {
+  display: flex;
+  width: 100%;
+  height: 30px;
+  border-style: solid;
+  background: #e6e6e6;
+  border-color: gray;
+  border-width: 0px 0px 3px 0px;
+  font-size: clamp(0.6rem, 0.8vw, 0.8rem);
+  color: black;
+  align-items: center;
+  padding-left: 2%;
+
+}
+
+.input-list-item:hover {
+  background: #FFFFFF;
+  cursor: pointer;
+
+
+}
+
+#event-participant-input:hover {
+  cursor: pointer;
+
+}
+
+.event-create-map-con {
+  display: flex;
+  width: 600px;
+  height: 400px;
+  margin-left: 20px;
+  margin-top:10px;
+  
 
 }

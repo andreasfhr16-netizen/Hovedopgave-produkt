@@ -4,8 +4,39 @@ import Navbar from "../components/navbar";
 import Link from "next/link";
 import dayjs from 'dayjs';
 import { DateTimePicker } from '@mantine/dates';
+import { useState, useEffect } from "react";
+import { useRouter } from 'next/navigation'
+import dynamic from 'next/dynamic';
+
+
+
+const Eventmap = dynamic(() => import('../components/leaflet-map'), {
+  ssr: false,
+});
 
 export default function Home() {
+
+  const [eventlocation, setEventlocation] = useState(null);
+
+  const [eventheading, setEventheading] = useState("")
+  const [eventdescription, setEventdescription] = useState("")
+  const [eventgebyrer, setEventgebyrer] = useState("")
+
+
+
+  console.log(eventheading)
+  console.log(eventdescription)
+
+  const [showtimezones, setShowtimezones] = useState(false)
+  const [selectedtimezone, setSelectedtimezone] = useState("")
+
+  const [showparticipants, setShowparticipants] = useState(false)
+  const [selectedparticipants, setSelectedparticipants] = useState("")
+
+
+
+
+
   return (
     <div className="event-create-page">
       <Navbar />
@@ -22,23 +53,20 @@ export default function Home() {
 
 
             <h2 id="event-create-subheading">Event overskrift</h2>
-            <input className="event-create-small-input" placeholder="Event overskrift"></input>
+            <input className="event-create-small-input" placeholder="Event overskrift" onChange={(e) => (setEventheading(e.target.value))}></input>
 
             <h2 id="event-create-subheading">Event beskrivelse</h2>
-            <textarea className="event-create-textarea-input" placeholder="Event beskrivelse"></textarea>
+            <textarea className="event-create-textarea-input" placeholder="Event beskrivelse" onChange={(e) => (setEventdescription(e.target.value))}></textarea>
 
             <h2 id="event-create-subheading">Event lokation</h2>
             <input className="event-create-small-input" placeholder="Event lokation"></input>
 
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d36041.065439590646!2d12.457654250000001!3d55.626956799999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sda!2sdk!4v1786722753877!5m2!1sda!2sdk"
-              width="600"
-              height="400"
-              style={{ border: 0, marginLeft: 20, marginTop: 20 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="strict-origin-when-cross-origin"
-            ></iframe>
+            <div className="event-create-map-con">
+
+              <Eventmap onLocationSelect={setEventlocation} />
+
+            </div>
+
           </div>
 
 
@@ -65,16 +93,36 @@ export default function Home() {
             </div>
 
             <h2 id="event-create-subheading">Event tidszone</h2>
-            <input className="event-create-small-input" placeholder="Tidszone"></input>
+            <input id="pick-event-timezone-input" className="event-create-small-input" placeholder={selectedtimezone} onClick={() => setShowtimezones(!showtimezones)}></input>
+
+            {showtimezones && (
+              <div className="input-list-con">
+                <div className="input-list-item" onClick={() => setSelectedtimezone("Western European Time (WET):")}><p>Western European Time (WET):</p></div>
+                <div className="input-list-item" onClick={() => setSelectedtimezone("Central European Time (CET):")}><p>Central European Time (CET): </p></div>
+                <div className="input-list-item" onClick={() => setSelectedtimezone("Eastern European Time (EET):")}><p>Eastern European Time (EET):</p></div>
+
+
+              </div>
+            )}
 
             <h2 id="event-create-subheading">Event gebyrer</h2>
-            <input className="event-create-small-input" placeholder="Ekstra gebyrer"></input>
+            <textarea className="event-create-textarea-input" placeholder="Gebyrer" onChange={(e) => (setEventgebyrer(e.target.value))}></textarea>
 
             <h2 id="event-create-subheading">Event tags</h2>
             <div className="event-create-tag-btn"><p>Vælg event kategori</p></div>
 
             <h2 id="event-create-subheading">Hvem må deltage i eventet</h2>
-            <input className="event-create-small-input" placeholder="Ekstra gebyrer"></input>
+            <input id="event-participant-input" className="event-create-small-input" placeholder={selectedparticipants} onClick={() => (setShowparticipants(!showparticipants))}></input>
+
+            {showparticipants && (
+              <div className="input-list-con">
+                <div className="input-list-item" onClick={() => setSelectedparticipants("Alle")}><p>Alle</p></div>
+                <div className="input-list-item" onClick={() => setSelectedparticipants("Kun venner")}><p>Kun venner </p></div>
+                <div className="input-list-item" onClick={() => setSelectedparticipants("Specifik gruppe")}><p>Specifik gruppe</p></div>
+                <div className="input-list-item" onClick={() => setSelectedparticipants("Specifik bruger")}><p>Specifik bruger</p></div>
+
+              </div>
+            )}
 
             <div className="event-create-event-btn"><p>opret event</p></div>
 
