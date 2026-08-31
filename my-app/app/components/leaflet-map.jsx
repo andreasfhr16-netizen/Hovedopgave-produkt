@@ -21,14 +21,30 @@ function LocationMarker({ onLocationSelect }) {
   const [position, setPosition] = useState(null);
 
   useMapEvents({
-    click: (e) => {
+    click: async (e) => {
       const { lat, lng } = e.latlng;
       console.log({ lat, lng });
       setPosition({ lat, lng });
-      onLocationSelect({ lat, lng });
+
+      const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&zoom=18&addressdetails=1`);
+      const data = await res.json();
+
+      const houseNr = data.address.house_number ?? "";
+      const streetName = data.address.road ?? "";
+      const eventCity = data.address.suburb ?? "";
+      const eventPostcode = data.address.postcode ?? "";
+
+      console.log(houseNr, streetName, eventCity, eventPostcode)
+      const eventLocation = " " + houseNr + " " + streetName + " " + eventCity + " " + eventPostcode;
+     
+
+
+
+
+      onLocationSelect({ lat, lng, name: eventLocation });
     },
   });
-  
+
   return position ? <Marker position={[position.lat, position.lng]} /> : null;
 
 }
@@ -36,7 +52,7 @@ function LocationMarker({ onLocationSelect }) {
 export default function EventMap({ onLocationSelect }) {
   return (
     /*start koordinat for map komponent vises som en lille markering*/
-    <MapContainer center={[55.6761, 12.5683]} zoom={13} style={{ height: '100%', width: '100%' }}>
+    <MapContainer center={[55.6338, 12.4751]} zoom={13} style={{ height: '100%', width: '100%' }}>
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; OpenStreetMap contributors'

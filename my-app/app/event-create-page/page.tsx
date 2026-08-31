@@ -5,8 +5,8 @@ import Link from "next/link";
 import dayjs from 'dayjs';
 import { DateTimePicker } from '@mantine/dates';
 import { useState, useEffect } from "react";
-import { useRouter } from 'next/navigation'
 import dynamic from 'next/dynamic';
+import { useRouter } from 'next/navigation'
 
 
 
@@ -15,8 +15,47 @@ const Eventmap = dynamic(() => import('../components/leaflet-map'), {
 });
 
 export default function Home() {
+  const router = useRouter();
 
-  const [eventlocation, setEventlocation] = useState(null);
+  const Event_create = async () => {
+    const response = await fetch("/api/create_event/", {
+      method: "POST",
+      headers: {
+
+
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        Event_heading: eventheading,
+        Event_description: eventdescription,
+        Event_location: eventlocation?.name,
+        Event_start_date: selectedstartdate,
+        Event_end_date: selectedenddate,
+        Event_timezone: selectedtimezone,
+        Event_attend_price: eventgebyrer,
+        Event_participants: selectedparticipants
+      }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      console.error("Fejl ved oprettelse:", data.error);
+      return;
+    }
+
+    console.log("Event oprettet :):", data);
+    router.push("/frontpage");
+  };
+
+
+  type EventLocation = {
+    lat: number;
+    lng: number;
+    name: string;
+  };
+
+  const [eventlocation, setEventlocation] = useState<EventLocation | null>(null);
 
   const [eventheading, setEventheading] = useState("")
   const [eventdescription, setEventdescription] = useState("")
@@ -33,7 +72,11 @@ export default function Home() {
   const [showparticipants, setShowparticipants] = useState(false)
   const [selectedparticipants, setSelectedparticipants] = useState("")
 
+  const [selectedenddate, setSelectedenddate] = useState<string | null>(null);
+  console.log(selectedenddate)
 
+  const [selectedstartdate, setSelectedstartdate] = useState<string | null>(null);
+  console.log(selectedstartdate)
 
 
 
@@ -59,7 +102,7 @@ export default function Home() {
             <textarea className="event-create-textarea-input" placeholder="Event beskrivelse" onChange={(e) => (setEventdescription(e.target.value))}></textarea>
 
             <h2 id="event-create-subheading">Event lokation</h2>
-            <input className="event-create-small-input" placeholder="Event lokation"></input>
+            <input className="event-create-small-input" placeholder={eventlocation ? eventlocation.name : "Vælg en lokation på kortet"}></input>
 
             <div className="event-create-map-con">
 
@@ -80,6 +123,8 @@ export default function Home() {
                 label="Start dato"
                 placeholder="Start"
                 classNames={{ input: 'event-create-dato-input' }}
+                value={selectedstartdate}
+                onChange={setSelectedstartdate}
               />
 
               <DateTimePicker
@@ -87,7 +132,8 @@ export default function Home() {
                 label="Slut dato"
                 placeholder="Slut"
                 classNames={{ input: 'event-create-dato-input' }}
-
+                value={selectedenddate}
+                onChange={setSelectedenddate}
               />
 
             </div>
@@ -106,7 +152,7 @@ export default function Home() {
             )}
 
             <h2 id="event-create-subheading">Event gebyrer</h2>
-            <textarea className="event-create-textarea-input" placeholder="Gebyrer" onChange={(e) => (setEventgebyrer(e.target.value))}></textarea>
+            <textarea className="event-create-textarea-input" placeholder="Ingen gebyrer" onChange={(e) => (setEventgebyrer(e.target.value))}></textarea>
 
             <h2 id="event-create-subheading">Event tags</h2>
             <div className="event-create-tag-btn"><p>Vælg event kategori</p></div>
@@ -124,7 +170,7 @@ export default function Home() {
               </div>
             )}
 
-            <div className="event-create-event-btn"><p>opret event</p></div>
+            <div className="event-create-event-btn" onClick={Event_create}><p>opret event</p></div>
 
           </div>
 
