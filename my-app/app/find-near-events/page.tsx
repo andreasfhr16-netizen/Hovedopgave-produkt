@@ -12,26 +12,45 @@ const Eventmap = dynamic(() => import('../components/leaflet-map'), {
 });
 
 
+const event_response = async () => {
+  const response = await fetch("/api/get_events/", {
+    method: "GET",
+    headers: {
+      "content-type": "application/json",
+    },
+
+  }
+
+
+  )
+
+  const data = await response.json();
+  console.log("Events modtaget:", data);
+};
 
 export default function Home() {
 
   const [eventlocation, setEventlocation] = useState(null);
 
+
+
+
+
   return (
     <div className="find-event-nær-page">
       <Navbar />
 
-      
-        
-      
+
+
+
 
       <div className="find-event-nær-con">
         <main>
-          
-          <div className="nær-event-con">
-<input className="nær-event-search-input" placeholder="Søg efter event"></input>
 
-            <Eventmap onLocationSelect={setEventlocation}/>
+          <div className="nær-event-con">
+            <input className="nær-event-search-input" placeholder="Søg efter event"></input>
+            
+            <Eventmap onLocationSelect={setEventlocation} mode="search" />
           </div>
 
           <p>test</p>

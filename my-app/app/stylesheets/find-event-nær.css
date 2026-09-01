@@ -46,3 +46,15 @@
     margin-left:50px;
 
 }
+
+.nær-event-search-button{
+display:flex;
+width:5vw;
+height:3vh;
+background:#FFFFFF;
+border-radius: 10px;
+cursor: pointer;
+z-index:1000;
+margin-left:50%;
+
+}

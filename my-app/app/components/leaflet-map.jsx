@@ -1,11 +1,12 @@
 "use client"
 
 import 'leaflet/dist/leaflet.css';
-import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, useMapEvents, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import Epreview from "./event-preview";
 
 //ikon størrelse og grafik samt lokation
 let DefaultIcon = L.icon({
@@ -16,12 +17,21 @@ let DefaultIcon = L.icon({
 });
 L.Marker.prototype.options.icon = DefaultIcon
 
-//Lytter efter klik på kortet og sender koordinaterne videre
-function LocationMarker({ onLocationSelect }) {
+
+
+//2 modes / tilstande: "view" bruges til at vælge en lokation, "search" bruges til at vise events i nærheden
+
+//"view" mode: lytter efter klik og sender koordinaterne videre
+function LocationMarker({ onLocationSelect, mode }) {
+  
   const [position, setPosition] = useState(null);
+
+
 
   useMapEvents({
     click: async (e) => {
+      if (mode !== "view") return;
+
       const { lat, lng } = e.latlng;
       console.log({ lat, lng });
       setPosition({ lat, lng });
@@ -34,30 +44,89 @@ function LocationMarker({ onLocationSelect }) {
       const eventCity = data.address.suburb ?? "";
       const eventPostcode = data.address.postcode ?? "";
 
-      console.log(houseNr, streetName, eventCity, eventPostcode)
       const eventLocation = " " + houseNr + " " + streetName + " " + eventCity + " " + eventPostcode;
-     
-
-
-
 
       onLocationSelect({ lat, lng, name: eventLocation });
     },
   });
 
+  if (mode !== "view") return null;
   return position ? <Marker position={[position.lat, position.lng]} /> : null;
-
 }
 
-export default function EventMap({ onLocationSelect }) {
+
+
+
+
+//"search" mode: henter events koordinater fra endpoint og viser dem som markører
+function EventMarkers({ mode }) {
+  const [events, setEvents] = useState([]);
+
+const [viseventitem, setViseventitem] = useState(false);
+  //tjekker om mode er "search" og henter events fra endpointet, hvis det er tilfældet
+  useEffect(() => {
+    
+    if (mode !== "search") return;
+
+  
+    const event_response = async () => {
+      const response = await fetch("/api/get_events/", {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+        },
+      });
+
+      const data = await response.json();
+      console.log("Events modtaget:", data);
+      setEvents(data);
+    };
+
+    event_response();
+  }, [mode]);
+
+  if (mode !== "search") return null;
+
+
+
+
+
+//går igennem et array af event objrkter og returnerer en marker for hvert registrert event udfra koordianter gemt i supsbase
+return events.map((eventitem) => {
+  if (!eventitem.Event_lat || !eventitem.Event_lng) return null;
+
   return (
-    /*start koordinat for map komponent vises som en lille markering*/
+    <Marker
+      key={eventitem.id}
+      position={[eventitem.Event_lat, eventitem.Event_lng]}
+      eventHandlers={{
+        click: () => setViseventitem(true)
+      }}
+    >
+      <Popup>
+        {viseventitem && <Epreview event={eventitem} />}
+      </Popup>
+    </Marker>
+  );
+});
+
+
+ 
+}
+
+
+export default function EventMap({ onLocationSelect, mode }) {
+  return (
+    /*start koordinat for map komponent vises som en lille kort markering*/
     <MapContainer center={[55.6338, 12.4751]} zoom={13} style={{ height: '100%', width: '100%' }}>
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; OpenStreetMap contributors'
       />
-      <LocationMarker onLocationSelect={onLocationSelect} />
+      <LocationMarker onLocationSelect={onLocationSelect} mode={mode} />
+      <EventMarkers mode={mode} />
     </MapContainer>
   );
+
+
 }

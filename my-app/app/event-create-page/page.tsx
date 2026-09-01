@@ -29,6 +29,8 @@ export default function Home() {
         Event_heading: eventheading,
         Event_description: eventdescription,
         Event_location: eventlocation?.name,
+        Event_lat: eventlocation?.lat,
+        Event_lng: eventlocation?.lng,
         Event_start_date: selectedstartdate,
         Event_end_date: selectedenddate,
         Event_timezone: selectedtimezone,
@@ -106,7 +108,7 @@ export default function Home() {
 
             <div className="event-create-map-con">
 
-              <Eventmap onLocationSelect={setEventlocation} />
+              <Eventmap onLocationSelect={setEventlocation} mode="view" />
 
             </div>
 
