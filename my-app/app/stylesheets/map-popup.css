@@ -1,0 +1,21 @@
+.popup-con {
+    width: 0px;
+
+
+}
+
+.popup-con .leaflet-popup-content-wrapper {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+}
+
+.leaflet-popup-tip-container {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+
+
+}

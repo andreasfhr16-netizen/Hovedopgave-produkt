@@ -7,6 +7,7 @@ import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import { useState, useEffect } from 'react';
 import Epreview from "./event-preview";
+import "../stylesheets/map-popup.css";
 
 //ikon størrelse og grafik samt lokation
 let DefaultIcon = L.icon({
@@ -62,7 +63,7 @@ function LocationMarker({ onLocationSelect, mode }) {
 function EventMarkers({ mode }) {
   const [events, setEvents] = useState([]);
 
-const [viseventitem, setViseventitem] = useState(false);
+
   //tjekker om mode er "search" og henter events fra endpointet, hvis det er tilfældet
   useEffect(() => {
     
@@ -94,17 +95,16 @@ const [viseventitem, setViseventitem] = useState(false);
 //går igennem et array af event objrkter og returnerer en marker for hvert registrert event udfra koordianter gemt i supsbase
 return events.map((eventitem) => {
   if (!eventitem.Event_lat || !eventitem.Event_lng) return null;
+  console.log("dette er eventitem:", eventitem);
 
   return (
     <Marker
       key={eventitem.id}
       position={[eventitem.Event_lat, eventitem.Event_lng]}
-      eventHandlers={{
-        click: () => setViseventitem(true)
-      }}
+     
     >
-      <Popup>
-        {viseventitem && <Epreview event={eventitem} />}
+      <Popup className="popup-con">
+         <Epreview event={eventitem} />
       </Popup>
     </Marker>
   );

@@ -37,9 +37,7 @@ export default function Home() {
 
             <Epreview />
 
-            <Epreview />
-
-            <Epreview />
+           
 
           </div>
 
@@ -51,7 +49,7 @@ export default function Home() {
 
             <Epreview />
 
-            <Epreview />
+            
             
           </div>
 
