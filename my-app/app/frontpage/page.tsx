@@ -1,9 +1,23 @@
+"use client"
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/navbar";
 import "../stylesheets/frontpage.css";
+import {useEffect} from "react";
 
 export default function Home() {
+  const Get_user = async () => {
+
+    const response2 = await fetch("/api/who_logged_in/")
+    const user = await response2.json()
+    console.log("USER:", user);
+
+  }
+
+  useEffect(() => {
+    Get_user();
+  }, []);
+
   return (
     <div className="site-container">
       <main>
@@ -21,7 +35,7 @@ export default function Home() {
                   Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
               </div>
 
             </div>
@@ -62,27 +76,27 @@ export default function Home() {
               <div className="frontpage-shortcuts-btn-con">
 
                 <div className="frontpage-shortcut-btn">
-                 <Link href="/find-group">
-                  Find gruppe
+                  <Link href="/find-group">
+                    Find gruppe
                   </Link>
                 </div>
 
                 <div className="frontpage-shortcut-btn">
                   <Link href="/find-near-events">
-                  Find event nær dig
+                    Find event nær dig
                   </Link>
                 </div>
 
                 <div className="frontpage-shortcut-btn">
                   <Link href="/social-view-page">
-                  Venneliste
+                    Venneliste
                   </Link>
                 </div>
 
                 <div className="frontpage-shortcut-btn">
-                 
+
                   <Link href="/event-create-page">
-                  Opret event
+                    Opret event
                   </Link>
                 </div>
 
@@ -98,15 +112,15 @@ export default function Home() {
 
         </div>
 
-<div className="wave-container">
-  <Image 
-    src="/hovedopgave-waves-2.svg" 
-    alt="wave decoration" 
-    width={1903} 
-    height={200} 
-    className="wave-svg"
-  />
-</div>
+        <div className="wave-container">
+          <Image
+            src="/hovedopgave-waves-2.svg"
+            alt="wave decoration"
+            width={1903}
+            height={200}
+            className="wave-svg"
+          />
+        </div>
       </main>
     </div>
   );

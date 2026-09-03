@@ -5,10 +5,11 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from 'next/navigation'
 
-export default function Home() {
-const router = useRouter();
 
-  const LoggedInUser ={}
+export default function Home() {
+  const router = useRouter();
+
+ 
   const [loginmail, setLoginmail] = useState("")
   const [loginpassword, setLoginpassword] = useState("");
 
@@ -25,7 +26,7 @@ const router = useRouter();
         mail: loginmail,
       }),
     });
-
+    //med await venter den på en respons fra api og hvis denne response er ok fortsætter den uden om if-statement
     const data = await response.json();
 
     if (!response.ok) {
@@ -33,10 +34,14 @@ const router = useRouter();
       return;
     }
 
-    
-     router.push("/frontpage");
-    
+    const response2 = await fetch("/api/who_logged_in/")
+    const user = await response2.json()
+    console.log("USER:", user);
+    router.push("/frontpage");
+
+
   };
+
 
 
   return (

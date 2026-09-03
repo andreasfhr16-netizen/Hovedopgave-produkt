@@ -4,10 +4,42 @@ import "../stylesheets/user-profile.css"
 import BrugerNavbar from "../components/user-profile-navbar.jsx"
 import PEpreview from "../components/profile-event-preview.jsx";
 import { useState } from "react"
+import { useEffect } from "react";
+
 
 export default function Home() {
 
+  type User = {
+    mail: string;
+    username: string;
+    password: string;
+  } | null;
+
+  const [user, setUser] = useState<User>(null);
+
   const [vispanel, setVisPanel] = useState(false);
+
+
+
+
+  const Get_user = async () => {
+
+
+
+    const response2 = await fetch("/api/who_logged_in/")
+    const user = await response2.json()
+    console.log("USER:", user);
+    setUser(user);
+
+  }
+
+  useEffect(() => {
+
+    Get_user();
+  }, []);
+
+
+
 
   return (
     <div className="user-profile-page">
@@ -59,7 +91,7 @@ export default function Home() {
 
                 <div className="user-settings-section-heading">
 
-                  <h1 id="user-settings-heading">Velkommen, [brugernavn]</h1>
+                  <h1 id="user-settings-heading">Velkommen, {user?.username}</h1>
 
                 </div>
 
@@ -111,7 +143,7 @@ export default function Home() {
                           <h1>Brugernavn</h1>
                         </div>
 
-                        <input className="user-settings-input" ></input>
+                        <input className="user-settings-input" value={user?.username} readOnly></input>
 
                         <div className="user-settings-input-edit-text">
                           <h1>Rediger</h1>
@@ -130,7 +162,7 @@ export default function Home() {
                           <h1>Kodeord</h1>
                         </div>
 
-                        <input className="user-settings-input" ></input>
+                        <input className="user-settings-input" value={user?.password} readOnly></input>
 
                         <div className="user-settings-input-edit-text">
                           <h1>Rediger</h1>
@@ -151,7 +183,7 @@ export default function Home() {
                           <h1>Mail</h1>
                         </div>
 
-                        <input className="user-settings-input" ></input>
+                        <input className="user-settings-input" value={user?.mail} readOnly></input>
 
                         <div className="user-settings-input-edit-text">
                           <h1>Rediger</h1>
