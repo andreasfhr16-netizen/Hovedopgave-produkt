@@ -3,7 +3,7 @@ import "../stylesheets/frontpage.css";
 import Link from "next/link";
 import { useEffect } from "react";
 import { useState } from "react";
-import { logout } from "../api/delete_cookie/route";
+import { logout } from "../actions/delete_cookie";
 
 
 
