@@ -16,7 +16,7 @@ export async function POST(request: Request) {
 
     const { data, error } = await supabase
         .from("users")
-        .select("password, mail, username")
+        .select("password, mail, username, id")
         .eq("mail", mail)
         .eq("password", password)
         .single();
@@ -24,6 +24,7 @@ export async function POST(request: Request) {
     console.log("MAIL:", JSON.stringify(mail));
     console.log("PASSWORD:", JSON.stringify(password));
     console.log("USERNAME:", JSON.stringify(data?.username));
+    console.log("ID:", JSON.stringify(data?.id));
     console.log("SUPABASE ERROR:", error);
     console.log("SUPABASE DATA:", data);
 
@@ -37,7 +38,7 @@ export async function POST(request: Request) {
 
     cookieStore.set({
         name: 'user',
-        value: JSON.stringify({ mail, password, username: data?.username }),
+        value: JSON.stringify({ mail, password, username: data?.username, id: data?.id }),
         httpOnly: true,
         path: '/',
     })

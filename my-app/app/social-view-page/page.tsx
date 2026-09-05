@@ -1,11 +1,72 @@
+"use client";
 import Image from "next/image";
 import "../stylesheets/social-view-page.css";
 import Link from "next/link";
 import Navbar from "../components/navbar"
 import Felement from "../components/friend-element"
 import GroupFriendpreview from "../components/group-friend-page-preview";
+import { useState, useEffect } from "react";
 
 export default function Home() {
+
+  const [newFriendName, setNewFriendName] = useState("");
+  const [favouriteFriends, setFavouriteFriends] = useState([]);
+  const [showAddFriendForm, setShowAddFriendForm] = useState(false);
+
+
+  const handleAddFriend = async () => {
+    const response = await fetch("/api/add_friend/", {
+      method: "POST",
+      headers: {
+
+
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        user_id: user?.id,
+        friend_username: newFriendName,
+      }),
+    });
+
+    const data = await response.json();
+    console.log("Tilføj ven:", newFriendName);
+
+    if (!response.ok) {
+      console.error("Fejl ved oprettelse:", data.error);
+      return;
+    }
+
+
+
+  };
+
+
+  type User = {
+    mail: string;
+    username: string;
+    password: string;
+    id: string;
+  } | null;
+
+  const [user, setUser] = useState<User>(null);
+
+
+  const Get_user = async () => {
+
+
+
+    const response2 = await fetch("/api/who_logged_in/")
+    const user = await response2.json()
+    console.log("USER:", user);
+    setUser(user);
+
+  }
+
+  useEffect(() => {
+
+    Get_user();
+  }, []);
+
   return (
     <div className="social-view-page">
       <main>
@@ -127,9 +188,20 @@ export default function Home() {
             <div className="friend-showcase-section-row-btn-row">
 
               <div className="friend-showcase-section-row-btn">
-                <p>Tilføj ven</p>
+                <p onClick={() => setShowAddFriendForm(!showAddFriendForm)}>Tilføj ven</p>
+
               </div>
+
+              {showAddFriendForm && (
+
+
+                <input className="add-friend-input" placeholder="Indtast venens brugernavn" onChange={(e) => setNewFriendName(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && handleAddFriend()} ></input>
+
+              )}
+
             </div>
+
+
 
           </div>
 
@@ -180,11 +252,11 @@ export default function Home() {
 
           </div>
 
-<div className="footer-section"></div>
+          <div className="footer-section"></div>
 
         </div>
 
-        
+
       </main>
     </div>
   );

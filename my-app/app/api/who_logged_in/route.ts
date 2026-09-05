@@ -23,6 +23,7 @@ export async function GET() {
     return NextResponse.json({
         mail: userData?.mail,
         password: userData?.password,
-        username: userData?.username
+        username: userData?.username,
+        id: userData?.id
     });
 }

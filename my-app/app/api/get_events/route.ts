@@ -1,3 +1,4 @@
+//api rute der henter alle events fra supabase "events" tabellen
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 
@@ -12,6 +13,7 @@ export async function GET(request: Request) {
   const { data, error } = await supabase
     .from("events")
     .select("*")  
+    
     
   
 if (error){
