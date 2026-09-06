@@ -67,6 +67,58 @@ export default function Home() {
     Get_user();
   }, []);
 
+
+
+
+
+  const [friendsamount, setFriendsamount] = useState()
+
+  type Friend = {
+    id: string;
+    username: string;
+  };
+
+  const [friends, setFriends] = useState<Friend[]>([]);
+
+  //henter venner fra check_friend ruten baseret på id af loggede ind bruger
+  const Get_friends = async (userId: string) => {
+    const response = await fetch("/api/check_friends/", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        user_id: userId,
+      }),
+    });
+
+    //logger listen af venner efter respons
+    const friendlist = await response.json();
+    console.log("brugerens liste af venner", friendlist);
+    setFriends(friendlist.data)
+    setFriendsamount(friendlist.data.length)
+
+
+  }
+
+
+  useEffect(() => {
+
+    if (user?.id) {
+      Get_friends(user.id);
+    }
+
+  }, [user])
+
+
+  useEffect(() => {
+
+    console.log("mængden af venner", friendsamount)
+
+  }, [friendsamount])
+
+
+
   return (
     <div className="social-view-page">
       <main>
@@ -85,45 +137,15 @@ export default function Home() {
 
             <div className="friend-showcase-section-row-main">
 
-              <div className="friend-icon-wrapper">
-                <Felement />
-                <div className="friend-icon-row">
-                  <div className="friend-icon-btn">
-                    <Image src="/star-icon.png" alt="Favorit" width={20} height={20} />
-                  </div>
-                  <div className="friend-icon-btn">
-                    <Image src="/trashcan.png" alt="Slet ven" width={20} height={20} />
-                  </div>
-                </div>
-              </div>
+              
+                {/*betyder det at hver vens navn skrivers i p tag  */}
+                {friends.map((friend) => (
+                  <div className="friend-icon-wrapper">
 
-              <div className="friend-icon-wrapper">
-                <Felement />
-                <div className="friend-icon-row">
-                  <div className="friend-icon-btn">
-                    <Image src="/star-icon.png" alt="Favorit" width={20} height={20} />
-                  </div>
-                  <div className="friend-icon-btn">
-                    <Image src="/trashcan.png" alt="Slet ven" width={20} height={20} />
-                  </div>
-                </div>
-              </div>
 
-              <div className="friend-icon-wrapper">
-                <Felement />
-                <div className="friend-icon-row">
-                  <div className="friend-icon-btn">
-                    <Image src="/star-icon.png" alt="Favorit" width={20} height={20} />
-                  </div>
-                  <div className="friend-icon-btn">
-                    <Image src="/trashcan.png" alt="Slet ven" width={20} height={20} />
-                  </div>
-                </div>
-              </div>
+                  <Felement key={friend.id} friend={friend} />
 
-              <div className="friend-icon-wrapper">
-                <Felement />
-                <div className="friend-icon-row">
+                  <div className="friend-icon-row">
                   <div className="friend-icon-btn">
                     <Image src="/star-icon.png" alt="Favorit" width={20} height={20} />
                   </div>
@@ -131,55 +153,12 @@ export default function Home() {
                     <Image src="/trashcan.png" alt="Slet ven" width={20} height={20} />
                   </div>
                 </div>
-              </div>
+                </div>
 
-              <div className="friend-icon-wrapper">
-                <Felement />
-                <div className="friend-icon-row">
-                  <div className="friend-icon-btn">
-                    <Image src="/star-icon.png" alt="Favorit" width={20} height={20} />
-                  </div>
-                  <div className="friend-icon-btn">
-                    <Image src="/trashcan.png" alt="Slet ven" width={20} height={20} />
-                  </div>
-                </div>
-              </div>
+                ))}
 
-              <div className="friend-icon-wrapper">
-                <Felement />
-                <div className="friend-icon-row">
-                  <div className="friend-icon-btn">
-                    <Image src="/star-icon.png" alt="Favorit" width={20} height={20} />
-                  </div>
-                  <div className="friend-icon-btn">
-                    <Image src="/trashcan.png" alt="Slet ven" width={20} height={20} />
-                  </div>
-                </div>
-              </div>
-
-              <div className="friend-icon-wrapper">
-                <Felement />
-                <div className="friend-icon-row">
-                  <div className="friend-icon-btn">
-                    <Image src="/star-icon.png" alt="Favorit" width={20} height={20} />
-                  </div>
-                  <div className="friend-icon-btn">
-                    <Image src="/trashcan.png" alt="Slet ven" width={20} height={20} />
-                  </div>
-                </div>
-              </div>
-
-              <div className="friend-icon-wrapper">
-                <Felement />
-                <div className="friend-icon-row">
-                  <div className="friend-icon-btn">
-                    <Image src="/star-icon.png" alt="Favorit" width={20} height={20} />
-                  </div>
-                  <div className="friend-icon-btn">
-                    <Image src="/trashcan.png" alt="Slet ven" width={20} height={20} />
-                  </div>
-                </div>
-              </div>
+                
+              
 
 
 
@@ -212,9 +191,14 @@ export default function Home() {
             </div>
 
             <div className="favourite-friend-section-row-main">
-              <div className="friend-icon-wrapper">
-                <Felement />
-                <div className="friend-icon-row">
+             
+             {friends.map((friend) => (
+                  <div className="friend-icon-wrapper">
+
+
+                  <Felement key={friend.id} friend={friend} />
+
+                  <div className="friend-icon-row">
                   <div className="friend-icon-btn">
                     <Image src="/star-icon.png" alt="Favorit" width={20} height={20} />
                   </div>
@@ -222,7 +206,9 @@ export default function Home() {
                     <Image src="/trashcan.png" alt="Slet ven" width={20} height={20} />
                   </div>
                 </div>
-              </div>
+                </div>
+
+                ))}
 
             </div>
 
