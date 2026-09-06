@@ -147,9 +147,7 @@ export default function Home() {
 
               <div className="event-friend-component-con">
 
-                <Felement />
-                <Felement />
-                <Felement />
+                
 
 
               </div>
