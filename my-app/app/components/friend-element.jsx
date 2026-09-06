@@ -66,7 +66,7 @@ export default function Felement() {
             <div className="friend-name-con">
 
                 <>
-{/*key er her "friend" med p tagget læser vi så hver værdi vores key "friend" har og da hvert element i array får det  */}
+
 {/*betyder det at hver vens navn skrivers i p tag  */}
                     {friends.map((friend) => (
 
