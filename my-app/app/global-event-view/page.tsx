@@ -35,9 +35,9 @@ export default function Home() {
           </div>
           <div className="event-component-con">
 
-            <Epreview />
+            {/*<Epreview /> */}
 
-           
+
 
           </div>
 
@@ -47,10 +47,11 @@ export default function Home() {
           </div>
           <div className="event-component-con">
 
-            <Epreview />
+            {/*<Epreview /> */}
 
-            
-            
+
+
+
           </div>
 
 
