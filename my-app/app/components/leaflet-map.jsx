@@ -24,7 +24,7 @@ L.Marker.prototype.options.icon = DefaultIcon
 
 //"view" mode: lytter efter klik og sender koordinaterne videre
 function LocationMarker({ onLocationSelect, mode }) {
-  
+
   const [position, setPosition] = useState(null);
 
 
@@ -66,10 +66,10 @@ function EventMarkers({ mode }) {
 
   //tjekker om mode er "search" og henter events fra endpointet, hvis det er tilfældet
   useEffect(() => {
-    
+
     if (mode !== "search") return;
 
-  
+
     const event_response = async () => {
       const response = await fetch("/api/get_events/", {
         method: "GET",
@@ -90,28 +90,27 @@ function EventMarkers({ mode }) {
 
 
 
+  //går igennem et array af event objrkter og returnerer en marker for hvert registrert event udfra koordianter gemt i supsbase
+  return events.map((eventitem) => {
+    //opretter markør baseret på koordinatsæt 
+    if (!eventitem.Event_lat || !eventitem.Event_lng) return null;
+    console.log("dette er eventitem:", eventitem);
+
+    return (
+      <Marker
+        key={eventitem.id}
+        position={[eventitem.Event_lat, eventitem.Event_lng]}
+
+      >
+        <Popup className="popup-con">
+          <Epreview event={eventitem} />
+        </Popup>
+      </Marker>
+    );
+  });
 
 
-//går igennem et array af event objrkter og returnerer en marker for hvert registrert event udfra koordianter gemt i supsbase
-return events.map((eventitem) => {
-  if (!eventitem.Event_lat || !eventitem.Event_lng) return null;
-  console.log("dette er eventitem:", eventitem);
 
-  return (
-    <Marker
-      key={eventitem.id}
-      position={[eventitem.Event_lat, eventitem.Event_lng]}
-     
-    >
-      <Popup className="popup-con">
-         <Epreview event={eventitem} />
-      </Popup>
-    </Marker>
-  );
-});
-
-
- 
 }
 
 

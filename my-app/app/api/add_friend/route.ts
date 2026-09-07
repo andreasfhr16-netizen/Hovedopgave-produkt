@@ -1,4 +1,4 @@
-//lav en post request til friendships tabellen med en JSON body med bruger id og venne brugernavn ved brug af fetch metoden
+//lav en post request til friendships tabellen med en JSON body med bruger id og venne brugernavn 
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 
