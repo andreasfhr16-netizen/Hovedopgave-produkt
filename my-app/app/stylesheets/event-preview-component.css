@@ -1,129 +1,142 @@
-.event-preview-con{
-  display:flex;
-  flex-direction:column;
+.event-preview-con {
+  display: flex;
+  flex-direction: column;
   width: clamp(300px, 24vw, 400px);
   min-height: 260px;
-  outline:2px solid #000000;
-  border-radius:8px;
-  overflow:hidden;
-  background:#F1F1F1;
+  outline: 2px solid #000000;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #F1F1F1;
   font-family: inherit;
 }
 
-.event-preview-header-element{
-  display:flex;
-  align-items:center;
-  width:100%;
-  height:48px;
-  flex-shrink:0;
-  background:#FF6F3C;
+.event-preview-header-element {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 48px;
+  flex-shrink: 0;
+  background: #FF6F3C;
 }
 
-#event-preview-heading{
-  font-size:20px;
-  font-weight:bold;
-  color:white;
+#event-preview-heading {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
   margin: 0 0 0 20px;
 }
 
-.event-preview-tag-row-con{
-  display:flex;
-  flex-direction:column;
-  width:100%;
-  gap:8px;
+.event-preview-tag-row-con {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 8px;
   padding: 12px 20px 0 20px;
-  flex-shrink:0;
+  flex-shrink: 0;
 }
 
-.tag-row-heading{
-  display:flex;
-  width:100%;
-  font-size:15px;
-  font-weight:bold;
-  color:black;
-  margin:0;
+.tag-row-heading {
+  display: flex;
+  width: 100%;
+  font-size: 15px;
+  font-weight: bold;
+  color: black;
+  margin: 0;
 }
 
-.event-preview-tag-element-con{
-  display:flex;
-  flex-wrap:wrap;
-  width:100%;
-  gap:8px;
+.event-preview-tag-element-con {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 8px;
 }
 
-.event-preview-tag-element{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#262626;
+.event-preview-tag-element {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #262626;
   padding: 4px 12px;
-  border-radius:10px;
-  color:white;
-  font-size:12px;
-  white-space:nowrap;
+  border-radius: 10px;
+  color: white;
+  font-size: 12px;
+  white-space: nowrap;
 }
 
-.event-description-con{
-  display:flex;
-  flex-direction:column;
-  flex:1;
-  width:100%;
+.event-description-con {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
   padding: 12px 20px 16px 20px;
 }
 
-.event-description-heading-row{
-  display:flex;
-  width:100%;
-  flex-shrink:0;
+.event-description-heading-row {
+  display: flex;
+  width: 100%;
+  flex-shrink: 0;
 }
 
-#event-description-heading{
-  color:black;
-  font-weight:bold;
-  font-size:16px;
+#event-description-heading {
+  color: black;
+  font-weight: bold;
+  font-size: 16px;
   margin: 0 0 6px 0;
 }
 
-.event-description-info-row{
-  display:flex;
-  flex-direction:column;
-  width:100%;
-  flex:1;
-  overflow:hidden;
+.event-description-info-row {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex: 1;
+  overflow: hidden;
 }
 
-#event-description-text{
-  color:black;
-  font-size:13px;
-  font-weight:400;
-  line-height:1.4;
+#event-description-text {
+  color: black;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.4;
   max-height: calc(1.4em * 3);
   margin: 0 0 8px 0;
-  overflow:hidden;
+  overflow: hidden;
   word-break: break-word;
 }
 
-.event-preview-btn-row{
-  display:flex;
-  align-items:center;
-  width:100%;
-  gap:10px;
-  margin-top:auto;
-  flex-wrap:wrap;
+.event-preview-btn-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+  margin-top: auto;
+  flex-wrap: wrap;
 }
 
-.event-preview-btn{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  border-radius:4px;
-  width:auto;
-  height:auto;
-  color:white;
-  font-weight:bold;
-  font-size:13px;
-  background:#1A2B4C;
+.event-preview-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  width: auto;
+  height: auto;
+  color: white;
+  font-weight: bold;
+  font-size: 13px;
+  background: #1A2B4C;
   padding: 8px 14px;
-  white-space:nowrap;
-  cursor:pointer;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.invite-friend-input {
+  display: flex;
+  background: #FFFFFF;
+  color: #000000;
+  width: 10vw;
+  height: 3vh;
+  border-radius: 10px;
+  padding: 10px;
+  z-index: 1000;
+ margin-left:2px;
+
 }

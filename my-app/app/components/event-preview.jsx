@@ -6,7 +6,8 @@ import { useState, useEffect } from "react";
 export default function Epreview({ event }) {
 
 
-
+    const [invitefriendinput, setInvitefriendinput] = useState(false)
+    const [inviteuser, setInviteuser] = useState("")
 
     //navngiver parameteren / værdien den får til eventId og det den modtag er et langt event-id 
     //deltager i en event ved at sende post request med bruger id og event id
@@ -106,6 +107,28 @@ export default function Epreview({ event }) {
 
     console.log("Event modtaget i Epreview:", event);
 
+  const invite_user_to_event = async (eventId) => {
+        const response5 = await fetch("/api/invite_user_to_event/", {
+            method: "POST",
+            headers: {
+
+
+                "content-type": "application/json",
+            },
+            body: JSON.stringify({
+                invite_user_id: inviteuser,
+                selected_event: eventId,
+            }),
+        });
+
+        const result23 = await response5.json();
+
+        console.log("jeg er result23",result23)
+
+    }
+
+
+
     return (
         <div
             className="event-preview-con"
@@ -148,7 +171,7 @@ export default function Epreview({ event }) {
                     {!joinedevent && (
 
                         <div className="event-preview-btn" onClick={() => {
-//join_event funktionen modtag id af nuværende event som parameter og sender videre
+                            //join_event funktionen modtag id af nuværende event som parameter og sender videre
                             join_event(event.id);
                         }}>
 
@@ -164,11 +187,29 @@ export default function Epreview({ event }) {
 
                     )}
 
-                    <div className="event-preview-btn">
+                    
+
+                    <div className="event-preview-btn" onClick={() => { setInvitefriendinput(!invitefriendinput) }}>
                         <p>Inviter til event</p>
+
+
                     </div>
+
+                    {invitefriendinput && (
+
+                        <input className="invite-friend-input" placeholder="inviter bruger her" onChange={(e) => (setInviteuser(e.target.value))} onKeyDown={(e) => e.key === 'Enter' && invite_user_to_event(event.id) }></input>
+
+                    )}
+
+
+
                 </div>
+
+
+
+
             </div>
+
         </div>
     );
 }
