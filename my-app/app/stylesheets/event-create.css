@@ -175,3 +175,16 @@
   
 
 }
+#entry-price-input{
+ min-height: 20px;
+  height: fit-content;
+  min-width: 100px;
+  word-wrap: break-word;
+  background: #ffffff;
+  border-radius: 10px;
+  color: #000000;
+  padding: 5px;
+  margin-left: 20px;
+
+
+}

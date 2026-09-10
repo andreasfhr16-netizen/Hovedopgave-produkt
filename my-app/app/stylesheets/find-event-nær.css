@@ -15,20 +15,34 @@
 }
 
 .nær-event-con {
-    position:relative;
+    position: relative;
     width: 100vw;
     height: 90vh;
-    outline: 3px solid green;
     flex-direction: column;
     flex: 1;
+    
 
 }
 
 .nær-event-søgefelt-con {
     display: flex;
-    width: 25vw;
-    height: 10vh;
-   
+    width: 35vw;
+    height: 20vh;
+    flex-direction:row;
+    z-index:1000;
+    gap:50px;
+    position:absolute;
+
+
+}
+
+.search-input-con{
+display:flex;
+width:40%;
+height:100%;
+flex-direction:column;
+z-index:1000;
+gap:10px;
 
 }
 
@@ -36,25 +50,53 @@
     display: flex;
     background: #FFFFFF;
     color: #000000;
-    width: 25vw;
+    width: 13vw;
     height: 3vh;
     border-radius: 10px;
     padding: 10px;
-    position:absolute;
-    z-index:1000;
-    margin-top:10px;
-    margin-left:50px;
+    z-index: 1000;
+    margin-top: 10px;
+    margin-left: 50px;
 
 }
 
-.nær-event-search-button{
+.nær-event-budget-search-input {
+    display: flex;
+    background: #FFFFFF;
+    color: #000000;
+    width: 10vw;
+    height: 3vh;
+    border-radius: 10px;
+    padding: 10px;
+    z-index: 1000;
+    margin-left: 50px;
+
+}
+
+.nær-event-btn-con{
 display:flex;
-width:5vw;
-height:3vh;
-background:#FFFFFF;
-border-radius: 10px;
-cursor: pointer;
+flex-direction:column;
+width:10vw;
+height:20vh;
 z-index:1000;
-margin-left:50%;
+gap:10px;
+margin-top:10px;
+font-size:14px;
+
+
+}
+
+#nær-event-search-btn {
+    display: flex;
+    background: #1A2B4C;
+    color: #ffffff;
+    min-width:5vw;
+    max-width:10vw;
+    height: 3vh;
+    border-radius: 10px;
+    padding: 10px;
+    z-index: 1000;
+    justify-content:center;
+    align-items:center;
 
 }

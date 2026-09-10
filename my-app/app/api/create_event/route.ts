@@ -20,7 +20,8 @@ export async function POST(request: Request) {
         Event_start_date,
         Event_end_date,
         Event_timezone,
-        Event_attend_price,
+        Event_fees,
+        Event_entry_price,
         Event_participants } = body;
 
 
@@ -35,7 +36,8 @@ export async function POST(request: Request) {
             Event_start_date,
             Event_end_date,
             Event_timezone,
-            Event_attend_price,
+            Event_fees,
+            Event_entry_price,
             Event_participants
         }]);
 

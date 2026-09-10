@@ -34,7 +34,8 @@ export default function Home() {
         Event_start_date: selectedstartdate,
         Event_end_date: selectedenddate,
         Event_timezone: selectedtimezone,
-        Event_attend_price: eventgebyrer,
+        Event_fees: eventgebyrer,
+        Event_entry_price: entryprice,
         Event_participants: selectedparticipants
       }),
     });
@@ -61,7 +62,9 @@ export default function Home() {
 
   const [eventheading, setEventheading] = useState("")
   const [eventdescription, setEventdescription] = useState("")
-  const [eventgebyrer, setEventgebyrer] = useState("")
+  const [eventgebyrer, setEventgebyrer] = useState("Der er ingen event gebyrer")
+  const [entryprice, setEntryprice] = useState("0")
+  const [entrypricecurrency, setEntrypricecurrency] = useState("Kr")
 
 
 
@@ -79,6 +82,31 @@ export default function Home() {
 
   const [selectedstartdate, setSelectedstartdate] = useState<string | null>(null);
   console.log(selectedstartdate)
+
+
+  type User = {
+    mail: string;
+    username: string;
+    password: string;
+  } | null;
+
+  const [user, setUser] = useState<User>(null);
+
+  const Get_user = async () => {
+
+
+
+    const response2 = await fetch("/api/who_logged_in/")
+    const user = await response2.json()
+    console.log("USER:", user);
+    setUser(user);
+
+  }
+
+  useEffect(() => {
+
+    Get_user();
+  }, []);
 
 
 
@@ -155,6 +183,26 @@ export default function Home() {
 
             <h2 id="event-create-subheading">Event gebyrer</h2>
             <textarea className="event-create-textarea-input" placeholder="Ingen gebyrer" onChange={(e) => (setEventgebyrer(e.target.value))}></textarea>
+
+            <h2 id="event-create-subheading">Event entre pris</h2>
+            <div className="relative">
+              <input
+                id="entry-price-input"
+                type="number"
+              
+                step="1"
+                placeholder="0"
+                value={entryprice}
+                onChange={(e) => setEntryprice(e.target.value)}
+                className="w-full pr-14 pl-3 py-2 rounded-md border-0 outline-none"
+              />
+
+              <span className="absolute right-1 top-1/2 -translate-y-1/2 text-black pointer-events-none">
+                {entrypricecurrency}
+              </span>
+
+            </div>
+
 
             <h2 id="event-create-subheading">Event tags</h2>
             <div className="event-create-tag-btn"><p>Vælg event kategori</p></div>
