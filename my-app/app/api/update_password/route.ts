@@ -20,7 +20,7 @@ export async function POST(request: Request) {
         .from("users")
         .update({ password: newpassword })
         .eq("id", user_id)
-        .select("mail, username, id")
+        .select("mail, username, id, password")
         .single();
 
     if (error) {
@@ -35,6 +35,7 @@ export async function POST(request: Request) {
       mail: data.mail,
       username: data.username,
       id: data.id,
+      password: data.password,
     }),
     httpOnly: true,
     path: "/",
