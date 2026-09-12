@@ -59,6 +59,17 @@ export default function Navbar({ }) {
               <Link href="/frontpage" onClick={logout}>
                 Log ud
               </Link>
+              
+            </div>
+          </div>
+
+           <div className={"navbar-item"}>
+
+            <div className={"navbar-btn"}>
+              <Link href="/user-profile">
+                Brugerprofil
+              </Link>
+              
             </div>
           </div>
         </>

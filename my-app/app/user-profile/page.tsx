@@ -5,6 +5,7 @@ import BrugerNavbar from "../components/user-profile-navbar.jsx"
 import PEpreview from "../components/profile-event-preview.jsx";
 import { useState } from "react"
 import { useEffect } from "react";
+import Link from "next/link";
 
 
 export default function Home() {
@@ -124,13 +125,15 @@ export default function Home() {
         <BrugerNavbar />
         <div className="user-profile-page-con">
           <div className="page-side-content-con">
-            <button onClick={() => setVisPanel(!vispanel)}>Vis/skjul</button>
+            <button  onClick={() => setVisPanel(!vispanel)}><p id="sidepanel-heading">Sidepanel↓</p></button>
             {/*når venstre side er "true" fx vispanel så frmvises penallet (vispanel sættes til true med state og knappe tryk) */}
             {vispanel && (
 
               <div className="page-side-content">
                 <div className="page-side-content-item">
-                  <p>Venner</p>
+                  <Link href="/social-view-page">
+                                  Venner
+                                </Link>
                 </div>
 
                 <div className="page-side-content-item">
@@ -138,7 +141,9 @@ export default function Home() {
                 </div>
 
                 <div className="page-side-content-item">
-                  <p>Events nær dig</p>
+                  <Link href="/find-near-events">
+                                  Find events nær dig
+                                </Link>
                 </div>
 
                 <div className="page-side-content-item">
