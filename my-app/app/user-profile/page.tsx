@@ -13,13 +13,90 @@ export default function Home() {
     mail: string;
     username: string;
     password: string;
+    id: string;
   } | null;
 
   const [user, setUser] = useState<User>(null);
 
   const [vispanel, setVisPanel] = useState(false);
 
+  const [newpassword, setNewpassword] = useState("")
+  const [newusername, setNewusername] = useState("")
+  const [newmail, setNewmail] = useState("")
+  const [editpassword, setEditpassword] = useState(false)
+  const [editusername, setEditusername] = useState(false)
+  const [editmail, setEditmail] = useState(false)
 
+
+
+
+  const handleUpdateUsername = async () => {
+    const response5 = await fetch("/api/update_username/", {
+      method: "POST",
+      headers: {
+
+
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        newusername: newusername,
+        user_id: user?.id,
+
+      }),
+    });
+
+    const updatedusername = await response5.json()
+    console.log(updatedusername)
+    alert("Dit brugernavn er nu opdateret")
+    window.location.reload();
+
+
+  }
+
+
+  const handleUpdatePassword = async () => {
+    const response6 = await fetch("/api/update_password/", {
+      method: "POST",
+      headers: {
+
+
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        newpassword: newpassword,
+        user_id: user?.id,
+
+      }),
+    });
+
+    const updatedpassword = await response6.json()
+    console.log(updatedpassword)
+    alert("Dit password er nu opdateret")
+    window.location.reload();
+
+  }
+
+  const handleUpdateMail = async () => {
+    const response7 = await fetch("/api/update_mail/", {
+      method: "POST",
+      headers: {
+
+
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        newmail: newmail,
+        user_id: user?.id,
+
+      }),
+    });
+
+    const updatedmail = await response7.json()
+    console.log(updatedmail)
+    alert("Din bruger-mail er nu opdateret")
+    window.location.reload();
+
+  }
 
 
   const Get_user = async () => {
@@ -142,11 +219,16 @@ export default function Home() {
                         <div className="user-settings-input-heading">
                           <h1>Brugernavn</h1>
                         </div>
+                        {(!editusername &&
+                          <input id="username-input" className="user-settings-input" value={user?.username} disabled></input>
+                        )}
 
-                        <input className="user-settings-input" value={user?.username} readOnly></input>
+                        {(editusername &&
+                          <input id="username-input" className="user-settings-input" onChange={(e) => { setNewusername(e.target.value) }} onKeyDown={(e) => e.key === 'Enter' && handleUpdateUsername()}></input>
+                        )}
 
                         <div className="user-settings-input-edit-text">
-                          <h1>Rediger</h1>
+                          <h1 onClick={(e) => { setEditusername(!editusername) }}>Rediger</h1>
                         </div>
 
                       </div>
@@ -161,11 +243,18 @@ export default function Home() {
                         <div className="user-settings-input-heading">
                           <h1>Kodeord</h1>
                         </div>
+                        {(!editpassword &&
+                          <input className="user-settings-input" value={user?.password} disabled ></input>
 
-                        <input className="user-settings-input" value={user?.password} readOnly></input>
+                        )}
+
+                        {(editpassword &&
+                          <input className="user-settings-input" onChange={(e) => { setNewpassword(e.target.value) }} onKeyDown={(e) => e.key === 'Enter' && handleUpdatePassword()} ></input>
+
+                        )}
 
                         <div className="user-settings-input-edit-text">
-                          <h1>Rediger</h1>
+                          <h1 onClick={(e) => { setEditpassword(!editpassword) }}>Rediger</h1>
                         </div>
 
                       </div>
@@ -183,10 +272,20 @@ export default function Home() {
                           <h1>Mail</h1>
                         </div>
 
-                        <input className="user-settings-input" value={user?.mail} readOnly></input>
+                        {(editmail &&
+                          <input className="user-settings-input" onChange={(e) => { setNewmail(e.target.value) }} onKeyDown={(e) => e.key === 'Enter' && handleUpdateMail()} ></input>
+
+
+                        )}
+
+                        {(!editmail &&
+                          <input className="user-settings-input" value={user?.mail} disabled></input>
+
+
+                        )}
 
                         <div className="user-settings-input-edit-text">
-                          <h1>Rediger</h1>
+                          <h1 onClick={(e) => { setEditmail(!editmail) }}>Rediger</h1>
                         </div>
 
                       </div>
