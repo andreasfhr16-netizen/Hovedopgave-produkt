@@ -48,6 +48,7 @@ export default function Home() {
     }
 
     console.log("Event oprettet :):", data);
+    alert("event er nu oprettet")
     router.push("/frontpage");
   };
 
@@ -203,9 +204,6 @@ export default function Home() {
 
             </div>
 
-
-            <h2 id="event-create-subheading">Event tags</h2>
-            <div className="event-create-tag-btn"><p>Vælg event kategori</p></div>
 
             <h2 id="event-create-subheading">Hvem må deltage i eventet</h2>
             <input id="event-participant-input" className="event-create-small-input" placeholder={selectedparticipants} onClick={() => (setShowparticipants(!showparticipants))}></input>

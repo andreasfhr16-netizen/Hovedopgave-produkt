@@ -124,6 +124,7 @@ export default function Epreview({ event }) {
         const result23 = await response5.json();
 
         console.log("jeg er result23",result23)
+        alert("bruger er nu inviteret til event")
 
     }
 
