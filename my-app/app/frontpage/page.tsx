@@ -31,11 +31,11 @@ export default function Home() {
               <div id="frontpage-intro-text">
 
                 <h1>Velkommen til Event Planner</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                <p>Din one-stop platform for at opdage, organisere og deltage i spændende events i dit område. Uanset om du er på udkig efter dansedyster, brætspilcafeer eller fluefiskningsture, koncerter
+                  eller kulturelle oplevelser, har vi noget for dig.
 
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                  Med denne platform kan du let og hurtigt oprette begivenhder og dele dem med dine venner du kan også oprette
+                  en gruppe og deltage i diverse events sammen eller slå jer sammen i større grupper og skabe et rum kun for jer start i dag!</p>
               </div>
 
             </div>
