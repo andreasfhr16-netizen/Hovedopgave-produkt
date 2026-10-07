@@ -3,7 +3,7 @@ import "../stylesheets/event-create.css";
 import Navbar from "../components/navbar";
 import Link from "next/link";
 import dayjs from 'dayjs';
-import { DateTimePicker } from '@mantine/dates';
+import { DatePickerInput } from '@mantine/dates';
 import { useState, useEffect } from "react";
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation'
@@ -36,7 +36,8 @@ export default function Home() {
         Event_timezone: selectedtimezone,
         Event_fees: eventgebyrer,
         Event_entry_price: entryprice,
-        Event_participants: selectedparticipants
+        Event_participants: selectedparticipants,
+        Event_arrival_time: eventtime
       }),
     });
 
@@ -66,6 +67,7 @@ export default function Home() {
   const [eventgebyrer, setEventgebyrer] = useState("Der er ingen event gebyrer")
   const [entryprice, setEntryprice] = useState("0")
   const [entrypricecurrency, setEntrypricecurrency] = useState("Kr")
+  const [eventtime, setEventtime] = useState("")
 
 
 
@@ -149,8 +151,8 @@ export default function Home() {
             <h2 id="event-create-subheading">Event dato</h2>
             <div className="event-create-dato-con">
 
-              <DateTimePicker
-                valueFormat="DD MMM YYYY hh:mm A"
+              <DatePickerInput
+                valueFormat="DD MMM YYYY "
                 label="Start dato"
                 placeholder="Start"
                 classNames={{ input: 'event-create-dato-input' }}
@@ -158,8 +160,8 @@ export default function Home() {
                 onChange={setSelectedstartdate}
               />
 
-              <DateTimePicker
-                valueFormat="DD MMM YYYY hh:mm A"
+              <DatePickerInput
+                valueFormat="DD MMM YYYY "
                 label="Slut dato"
                 placeholder="Slut"
                 classNames={{ input: 'event-create-dato-input' }}
@@ -168,6 +170,9 @@ export default function Home() {
               />
 
             </div>
+
+            <h2 id="event-create-subheading">Event Ankomst og slut tid</h2>
+            <input id="pick-event-timezone-input" className="event-create-small-input" placeholder="Vælg tid" onChange={(e) => setEventtime(e.target.value)}></input>
 
             <h2 id="event-create-subheading">Event tidszone</h2>
             <input id="pick-event-timezone-input" className="event-create-small-input" placeholder={selectedtimezone} onClick={() => setShowtimezones(!showtimezones)}></input>
@@ -190,7 +195,7 @@ export default function Home() {
               <input
                 id="entry-price-input"
                 type="number"
-              
+
                 step="1"
                 placeholder="0"
                 value={entryprice}

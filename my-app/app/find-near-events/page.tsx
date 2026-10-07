@@ -108,10 +108,11 @@ export default function Home() {
 
                 <input className="nær-event-search-input" placeholder="Søg efter event" />
 
-                {(showbudgetinput &&
-
-                  <input className="nær-event-budget-search-input" placeholder="indtast budget" value={budgetinput} onChange={(e) => setBudgetinput(e.target.value)} />
-
+                {showbudgetinput && (
+                  <div className="nær-event-budget-input-wrapper">
+                    <input className="nær-event-budget-search-input" placeholder="indtast budget" value={budgetinput} onChange={(e) => setBudgetinput(e.target.value)}/>
+                    {budgetinput && <span className="nær-event-budget-currency">kr</span>}
+                  </div>
                 )}
 
 
@@ -127,6 +128,7 @@ export default function Home() {
                 {(showbudgetinput &&
 
                   <button id="nær-event-search-btn" onClick={filterSearch}>søg med filter</button>
+
 
                 )}
 

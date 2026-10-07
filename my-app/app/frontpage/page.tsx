@@ -100,6 +100,13 @@ export default function Home() {
                   </Link>
                 </div>
 
+                 <div className="frontpage-shortcut-btn">
+
+                  <Link href="/group-create-page">
+                    Opret gruppe
+                  </Link>
+                </div>
+
               </div>
 
             </div>

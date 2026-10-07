@@ -107,7 +107,7 @@ export default function Epreview({ event }) {
 
     console.log("Event modtaget i Epreview:", event);
 
-  const invite_user_to_event = async (eventId) => {
+    const invite_user_to_event = async (eventId) => {
         const response5 = await fetch("/api/invite_user_to_event/", {
             method: "POST",
             headers: {
@@ -123,7 +123,7 @@ export default function Epreview({ event }) {
 
         const result23 = await response5.json();
 
-        console.log("jeg er result23",result23)
+        console.log("jeg er result23", result23)
         alert("bruger er nu inviteret til event")
 
     }
@@ -167,6 +167,21 @@ export default function Epreview({ event }) {
                     </p>
                 </div>
 
+                <div className="event-description-heading-row">
+                    <p id="event-description-heading">
+                        Event tid og sted
+                    </p>
+                </div>
+
+                 <div className="event-description-info-row">
+                    <p id="event-description-text">
+                       <strong>Adresse:</strong> {event.Event_location} 
+                       <br></br> <strong>Periode:</strong> {event.Event_start_date} - {event.Event_end_date}
+                        <br></br> <strong>Tidszone:</strong> {event.Event_timezone}
+                         <br></br> <strong>Event tidspunkt:</strong> {event.Event_arrival_time}
+                    </p>
+                </div>
+
                 <div className="event-preview-btn-row">
 
                     {!joinedevent && (
@@ -188,7 +203,7 @@ export default function Epreview({ event }) {
 
                     )}
 
-                    
+
 
                     <div className="event-preview-btn" onClick={() => { setInvitefriendinput(!invitefriendinput) }}>
                         <p>Inviter til event</p>
@@ -198,7 +213,7 @@ export default function Epreview({ event }) {
 
                     {invitefriendinput && (
 
-                        <input className="invite-friend-input" placeholder="inviter bruger her" onChange={(e) => (setInviteuser(e.target.value))} onKeyDown={(e) => e.key === 'Enter' && invite_user_to_event(event.id) }></input>
+                        <input className="invite-friend-input" placeholder="inviter bruger her" onChange={(e) => (setInviteuser(e.target.value))} onKeyDown={(e) => e.key === 'Enter' && invite_user_to_event(event.id)}></input>
 
                     )}
 

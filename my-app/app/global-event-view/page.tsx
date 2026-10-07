@@ -13,7 +13,7 @@ export default function Home() {
 
         <div className="find-event-field">
 
-          <input className="find-event-search-input" placeholder="Søg efter gruppe"></input>
+          <input className="find-event-search-input" placeholder="Søg efter event"></input>
 
           <div className="find-event-search-input-btn-row">
 

@@ -1,8 +1,47 @@
+"use client";
 import Navbar from "../components/navbar";
 import "../stylesheets/find-group.css";
 import Gpreview from "../components/group-preview"
+import { useState, useEffect } from "react";
+
+type GroupItem = {
+  Group_id: string;
+  Group_name: string;
+  Group_description: string;
+  Group_participants: string[];
+  Group_owner: string;
+};
 
 export default function Home() {
+
+
+
+  const [groups, setGroups] = useState<GroupItem[]>([]);
+
+  const group_response = async () => {
+    try {
+      const response = await fetch("/api/get_groups/", {
+        method: "GET",
+        headers: { "content-type": "application/json" },
+      });
+      const data = await response.json();
+      setGroups(data);
+    } catch (err) {
+      console.error("Kunne ikke hente grupper:", err);
+    }
+   
+  };
+
+
+  
+
+  useEffect(() => {
+    setTimeout(() => {
+      group_response();
+    }, 1000);
+  }, []);
+
+
   return (
     <div className="find-group-page">
 
@@ -33,10 +72,9 @@ export default function Home() {
 
           </div>
           <div className="group-component-con">
+{/*groupitem er navn på prop og groups er arrayet af grupper */}
+            <Gpreview groupitem={groups.slice(0, 2)} />
 
-            <Gpreview />
-
-            <Gpreview />
           </div>
 
           <div className="find-group-heading-row">
@@ -45,11 +83,8 @@ export default function Home() {
           </div>
           <div className="group-component-con">
 
-            <Gpreview />
+            <Gpreview groupitem={groups.slice(0, 2)} />
 
-            <Gpreview />
-
-            <Gpreview />
           </div>
 
 
@@ -58,8 +93,8 @@ export default function Home() {
 
 
       </main>
- <div className="find-group-footer">
-        
+      <div className="find-group-footer">
+
       </div>
 
     </div>

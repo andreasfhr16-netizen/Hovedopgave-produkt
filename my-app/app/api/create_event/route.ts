@@ -22,7 +22,8 @@ export async function POST(request: Request) {
         Event_timezone,
         Event_fees,
         Event_entry_price,
-        Event_participants } = body;
+        Event_participants,
+        Event_arrival_time } = body;
 
 
     const { data, error } = await supabase
@@ -38,7 +39,8 @@ export async function POST(request: Request) {
             Event_timezone,
             Event_fees,
             Event_entry_price,
-            Event_participants
+            Event_participants,
+            Event_arrival_time
         }]);
 
     if (error) {
