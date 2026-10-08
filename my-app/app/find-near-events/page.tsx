@@ -33,12 +33,24 @@ const Eventmap = dynamic<EventMapProps>(() => import('../components/leaflet-map'
 
 export default function Home() {
   const [eventlocation, setEventlocation] = useState<EventLocation | null>(null);
-  const [budgetinput, setBudgetinput] = useState("");
   const [events, setEvents] = useState<EventItem[]>([]);
 
-  const [showbudgetinput, setShowbudgetinput] = useState(false)
+  // Værdier fra de forskellige filter-inputs
+  const [budgetinput, setBudgetinput] = useState("");
+  const [groupinput, setGroupinput] = useState("");
+  const [interestinput, setInterestinput] = useState("");
+  const [distanceinput, setDistanceinput] = useState("");
 
-  // Hent alle events ved load
+  
+  const [showfilterbox, setShowfilterbox] = useState(false)
+
+ 
+  const [showbudgetinput, setShowbudgetinput] = useState(false)
+  const [showgroupinput, setShowgroupinput] = useState(false)
+  const [showinterestinput, setShowinterestinput] = useState(false)
+  const [showdistanceinput, setShowdistanceinput] = useState(false)
+
+  
 
   const event_response = async () => {
     try {
@@ -88,7 +100,6 @@ export default function Home() {
     }
   };
 
-  // Almindeligt funktionskald - ingen ref involveret
   const filterSearch = () => {
     send_budget_events(budgetinput);
   };
@@ -110,8 +121,28 @@ export default function Home() {
 
                 {showbudgetinput && (
                   <div className="nær-event-budget-input-wrapper">
-                    <input className="nær-event-budget-search-input" placeholder="indtast budget" value={budgetinput} onChange={(e) => setBudgetinput(e.target.value)}/>
+                    <input className="nær-event-budget-search-input" placeholder="indtast budget" value={budgetinput} onChange={(e) => setBudgetinput(e.target.value)} />
                     {budgetinput && <span className="nær-event-budget-currency">kr</span>}
+                  </div>
+                )}
+
+                {showgroupinput && (
+                  <div className="nær-event-budget-input-wrapper">
+                    <input className="nær-event-budget-search-input" placeholder="gruppestørrelse" value={groupinput} onChange={(e) => setGroupinput(e.target.value)} />
+                    {groupinput && <span className="nær-event-budget-currency">pers.</span>}
+                  </div>
+                )}
+
+                {showinterestinput && (
+                  <div className="nær-event-budget-input-wrapper">
+                    <input className="nær-event-budget-search-input" placeholder="indtast interesse" value={interestinput} onChange={(e) => setInterestinput(e.target.value)} />
+                  </div>
+                )}
+
+                {showdistanceinput && (
+                  <div className="nær-event-budget-input-wrapper">
+                    <input className="nær-event-budget-search-input" placeholder="indtast afstand" value={distanceinput} onChange={(e) => setDistanceinput(e.target.value)} />
+                    {distanceinput && <span className="nær-event-budget-currency">km</span>}
                   </div>
                 )}
 
@@ -133,25 +164,67 @@ export default function Home() {
                 )}
 
 
-                {(!showbudgetinput &&
+              </div>
 
-                  <button id="nær-event-search-btn" onClick={(e) => { setShowbudgetinput(!showbudgetinput) }}>Anvend budget filter</button>
 
+              {/* Filtre-knap + boks der åbner under den */}
+              <div className="nær-event-filtre-con">
+
+                <button
+                  id="nær-event-filter-popup-btn"
+                  className={showfilterbox ? "filter-valg-aktiv" : ""}
+                  onClick={() => setShowfilterbox(!showfilterbox)}
+                >
+                  Filtre
+                </button>
+
+                {showfilterbox && (
+                  <div className="nær-event-filter-valg-con">
+
+                    <button
+                      id="nær-event-search-btn"
+                      className={showbudgetinput ? "filter-valg-aktiv" : ""}
+                      onClick={() => setShowbudgetinput(!showbudgetinput)}
+                    >
+                      Budget filter
+                    </button>
+
+                    <button
+                      id="nær-event-search-btn"
+                      className={showgroupinput ? "filter-valg-aktiv" : ""}
+                      onClick={() => setShowgroupinput(!showgroupinput)}
+                    >
+                      Gruppestørrelse filter
+                    </button>
+
+                    <button
+                      id="nær-event-search-btn"
+                      className={showinterestinput ? "filter-valg-aktiv" : ""}
+                      onClick={() => setShowinterestinput(!showinterestinput)}
+                    >
+                      Interesser filter
+                    </button>
+
+                    <button
+                      id="nær-event-search-btn"
+                      className={showdistanceinput ? "filter-valg-aktiv" : ""}
+                      onClick={() => setShowdistanceinput(!showdistanceinput)}
+                    >
+                      Afstand filter
+                    </button>
+
+                  </div>
                 )}
-
 
               </div>
 
             </div>
 
 
-
-
-
             <Eventmap onLocationSelect={setEventlocation} mode="search" events={events} />
           </div>
 
-          <p>test</p>
+          
         </main>
       </div>
     </div>

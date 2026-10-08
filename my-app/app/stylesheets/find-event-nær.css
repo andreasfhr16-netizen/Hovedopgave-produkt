@@ -30,7 +30,7 @@
     height: 20vh;
     flex-direction:row;
     z-index:1000;
-    gap:50px;
+    gap:10px;
     position:absolute;
 
 
@@ -43,6 +43,7 @@ height:100%;
 flex-direction:column;
 z-index:1000;
 gap:10px;
+padding-right:250px;
 
 }
 
@@ -77,15 +78,16 @@ font-size:14px;
     display: flex;
     background: #1A2B4C;
     color: #ffffff;
-    min-width:5vw;
-    max-width:10vw;
-    height: 3vh;
+    width: fit-content;          /* bredden vokser med teksten */
+    min-width: 5vw;
+    height: 3vh;                 /* fast højde, ens for alle knapper */
     border-radius: 10px;
-    padding: 10px;
+    padding: 10px 16px;
     z-index: 1000;
-    justify-content:center;
-    align-items:center;
-
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(10px, 2vw, 12px);
+    white-space: nowrap;         /* teksten bryder ikke over flere linjer */
 }
 
 .nær-event-budget-input-wrapper {
@@ -118,4 +120,48 @@ font-size:14px;
 .nær-event-budget-currency {
     flex-shrink: 0;
     color: #666;
+}
+
+.nær-event-filtre-con {
+    position: relative;
+    margin-top: 10px;
+}
+
+.nær-event-filter-valg-con {
+    position: absolute;
+    top: 4vh;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px;
+    background: #e7e7e7;
+    border: 1.5px solid #1A2B4C;
+    border-radius: 25px;
+    z-index: 1000;
+    font-size: 14px;
+}
+
+.nær-event-filter-valg-con #nær-event-search-btn {
+    max-width: none;
+    white-space: nowrap;
+    padding: 10px 16px;
+    opacity: 1;
+    cursor: pointer;
+}
+
+#nær-event-filter-popup-btn {
+    display: flex;
+    background: #1A2B4C;
+    color: #ffffff;
+    min-width:5vw;
+    max-width:10vw;
+    height: 3vh;
+    border-radius: 10px;
+    padding: 10px;
+    z-index: 1000;
+    justify-content:center;
+    align-items:center;
+    font-size:clamp(5px, 2vw, 12px);
+    margin-right:300px;
 }

@@ -70,10 +70,6 @@ export default function Home() {
   const [eventtime, setEventtime] = useState("")
 
 
-
-  console.log(eventheading)
-  console.log(eventdescription)
-
   const [showtimezones, setShowtimezones] = useState(false)
   const [selectedtimezone, setSelectedtimezone] = useState("")
 
@@ -84,7 +80,25 @@ export default function Home() {
   console.log(selectedenddate)
 
   const [selectedstartdate, setSelectedstartdate] = useState<string | null>(null);
-  console.log(selectedstartdate)
+
+  const [selectedcategories, setSelectedcategories] = useState<string[]>([]);
+
+  type Interest = {
+    interest_id: string;
+    interest_name: string;
+    category_id: number;
+  };
+
+  const [interests, setInterests] = useState<Interest[]>([]);
+  const [selectedinterests, setSelectedinterests] = useState<string[]>([]);
+
+  type Category = {
+    category_name: string;
+  };
+
+
+  //categories er et array af Category objekter, som hentes fra supabase "categories" tabellen
+  const [categories, setCategories] = useState<Category[]>([]);
 
 
   type User = {
@@ -106,10 +120,41 @@ export default function Home() {
 
   }
 
+  const Get_event_categories = async () => {
+    const response42 = await fetch("/api/get_global_event_categories/")
+    const eventcategories = await response42.json()
+    console.log("kategorier tilgængelige for eventen:", eventcategories);
+    setCategories(eventcategories);
+
+
+  }
+
+  const Get_interests_by_categories = async () => {
+    const response = await fetch("/api/get_interests_by_categories/", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ categories: selectedcategories }),
+    });
+    const data = await response.json();
+    console.log("Interesser for valgte kategorier:", data);
+    setInterests(Array.isArray(data) ? data : []);
+  };
+
+
   useEffect(() => {
 
     Get_user();
+    Get_event_categories();
   }, []);
+
+
+  useEffect(() => {
+    console.log("Valgte kategorier:", selectedcategories);
+
+
+    Get_interests_by_categories();
+    setSelectedinterests([]);
+  }, [selectedcategories]);
 
 
 
@@ -209,6 +254,101 @@ export default function Home() {
 
             </div>
 
+            <h2 id="event-create-subheading">Tilgængelige event kategorier</h2>
+
+            <div className="event-create-category-con">
+
+              <div className="event-create-category-con">
+                {categories.map((category, index) => (
+                  <div
+                    className="event-create-category-item"
+                    key={index}
+                    onClick={() => {
+                      //hvis selectedcategories arrayet allerede indeholder kategori navnet, fjernes det fra arrayet, ellers tilføjes det til arrayet
+                      if (selectedcategories.includes(category.category_name)) {
+
+                        setSelectedcategories(
+                          selectedcategories.filter((item) => item !== category.category_name
+
+                          )
+
+                        );
+
+                      }
+
+                      else {
+
+                        setSelectedcategories([
+                          ...selectedcategories, category.category_name]);
+                      }
+                    }}
+                  >
+                    <p>{category.category_name}</p>
+                  </div>
+                ))}
+              </div>
+
+
+            </div>
+
+            <h2 id="event-create-subheading">Valgte kategorier</h2>
+
+            <div className="event-create-category-con"
+              style={{ marginLeft: "10px" }}
+            >
+              {categories.map((category, index) => (
+                //valgte kategorier vises kun hvis de ikke allerede er valgt og indeholder string værdien af kategori navnet
+                selectedcategories.includes(category.category_name) && (
+                  <div className="event-create-category-item" key={index}>
+                    <p>{category.category_name}</p>
+                  </div>
+                )
+              ))}
+            </div>
+            {selectedcategories.length > 0 && (
+              <>
+                <h2 id="event-create-subheading">Event interesser tilgængelige</h2>
+
+                <div className="event-create-category-con"
+                  style={{ marginLeft: "10px" }}
+                >
+                  {interests.map((interest) => (
+                    <div
+                      className="event-create-category-item"
+                      key={interest.interest_id}
+                      onClick={() => {
+                        if (selectedinterests.includes(interest.interest_name)) {
+                          setSelectedinterests(
+                            selectedinterests.filter((item) => item !== interest.interest_name)
+                          );
+                        } else {
+                          console.log("Tilføjer interesse:", interest.interest_name);
+                          setSelectedinterests([...selectedinterests, interest.interest_name]);
+                        }
+                      }}
+                    >
+                      <p>{interest.interest_name}</p>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
+
+            <h2 id="event-create-subheading">Interesser valgt</h2>
+
+            <div className="event-create-category-con"
+              style={{ marginLeft: "10px" }}
+            >
+              {interests.map((interest, index) => (
+                //valgte interesser vises 
+                selectedinterests.includes(interest.interest_name) && (
+                  <div className="event-create-category-item" key={index}>
+                    <p>{interest.interest_name}</p>
+                  </div>
+                )
+              ))}
+            </div>
+
 
             <h2 id="event-create-subheading">Hvem må deltage i eventet</h2>
             <input id="event-participant-input" className="event-create-small-input" placeholder={selectedparticipants} onClick={() => (setShowparticipants(!showparticipants))}></input>
@@ -223,7 +363,7 @@ export default function Home() {
               </div>
             )}
 
-            <div className="event-create-event-btn" onClick={Event_create}><p>opret event</p></div>
+            <div className="event-create-event-btn" onClick={Event_create}><p>Opret event</p></div>
 
           </div>
 

@@ -26,9 +26,11 @@ export default function Home() {
       });
       const data = await response.json();
       setGroups(data);
+      console.log("Grupper hentet:", data);
     } catch (err) {
       console.error("Kunne ikke hente grupper:", err);
     }
+    
    
   };
 

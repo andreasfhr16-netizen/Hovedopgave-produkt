@@ -84,9 +84,14 @@ export default function Gpreview({ groupitem }) {
     return (
         <div className="group-component-con">
             {groupitem.map((group) => {
+                //.map() løber hvert objekt i groupitem-arrayet igennem
+//Parameteren group indeholder det aktuelle gruppe-objekt (fx Group_name, Group_id)
+
                 const joinedgroup = joinedGroups.includes(group.Group_id);
+                //returnerer booelan med gruppe deltgelses tilstand hvis et gruppe id er i joinedGroups arrayet
 
                 return (
+                    //her bruges en key så hvert gruppe-objekt div kan identificeres unikt i DOM'en
                     <div className="group-showcase-con" key={group.Group_id}>
 
                         <div className="group-showcase-img-box"></div>
